@@ -15,14 +15,19 @@ class Service (models.Model):
             (APPROVE_STAT, 'Approved'),
             )
 
-    name            = models.CharField(max_length=255, unique=True)
-    nickname        = models.SlugField(unique=True, max_length=100)
-    description     = models.CharField(max_length=10000)
-    owner           = models.ForeignKey(User)
-    support_contact = models.EmailField()
-    doc_url         = models.URLField()
-    root_url        = models.URLField()
-    status          = models.IntegerField(choices=STATUS_CHOICES)
+    name            = models.CharField(max_length=255, 
+			unique=True, 
+			help_text="Type in the full name of your service")
+    nickname        = models.SlugField(unique=True, 
+			max_length=100, 
+			help_text="Choose a shortname for your service")
+    description     = models.CharField(max_length=10000, 
+			help_text="Type in a description for your service so people know what it does")
+    owner           = models.ForeignKey(User) 
+    support_contact = models.EmailField(help_text="Email address of the service owner")
+    doc_url         = models.URLField(help_text="Type in the url to your service documentation")
+    root_url        = models.URLField(help_text="Type in the service url that you want exposed to applications")
+    status          = models.IntegerField(choices=STATUS_CHOICES, help_text="Choose from: submitted, denied, approved")
     date_submitted  = models.DateTimeField()
     date_modified   = models.DateTimeField()
 
