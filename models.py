@@ -29,7 +29,7 @@ class Service (models.Model):
             help_text="Choose a shortname for your service",
             )
 
-    description = models.CharField(
+    description = models.TextField(
             max_length=10000, 
             help_text="Type in a description for your service so people know what it does",
             )
@@ -61,4 +61,6 @@ class Service (models.Model):
     def __unicode__ (self):
         return self.nickname;
 
+    def get_absolute_url(self):
+        return "/%s/" % self.nickname;
 
