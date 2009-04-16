@@ -15,7 +15,7 @@ def home(request):
 
 
 def service(request, nick):
-    #service bot must have this nick and be approved:
+    #service must have this nick and be approved:
     service = get_object_or_404(Service, nickname=nick, status=Service.APPROVE_STAT)
     return render_to_response(
             "service.html",
