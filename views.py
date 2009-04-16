@@ -3,14 +3,21 @@ from django.shortcuts import render_to_response
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from uwregistry.forms import ServiceForm
+from uwregistry.models import Service
 from datetime import datetime
 
 def home(request):
     return HttpResponse("First home")
 
-
 def service(request, nick):
     return HttpResponse("Service page: %s" % nick)
+
+def browse(request):
+    allServices = Service.objects.all()
+    return render_to_response("browse.html", {
+        'allServices' : allServices,
+        }, context_instance=RequestContext(request))
+    
 
 @login_required
 def submit(request):

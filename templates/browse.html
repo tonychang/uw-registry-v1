@@ -1,0 +1,16 @@
+{%extends "base.html"%}
+
+{%block title %}- Browse services{% endblock %}
+
+{%block body %}
+{% if allServices %}
+    <ul>
+    {% for service in allServices %}
+        <li>{{ service.name }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No services available.</p>
+{% endif %}
+
+{% endblock %}
