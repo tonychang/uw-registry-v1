@@ -9,6 +9,11 @@
 
         {% if user.is_authenticated%}
         <div>Welcome {{user.username}}</div>
+        {%if messages%}
+        {%for message in messages %}
+        *{{message}} 
+        {%endfor%}
+        {%endif%}
         {% endif %}
 
         <div>
