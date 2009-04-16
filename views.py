@@ -46,7 +46,7 @@ def edit(request, nick):
         print form.is_valid()
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(service.get_absolute_url())
+            return HttpResponseRedirect('/service/mine/')
     else:
         form = ServiceForm(instance=service)
 
