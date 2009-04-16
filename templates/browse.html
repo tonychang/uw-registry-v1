@@ -3,7 +3,7 @@
 {%block title %}- Browse services{% endblock %}
 
 {%block body %}
-{% if allServices %}
+{% if all_services%}
     <ul>
     {% for service in all_services %}
     <li><a href="{{service.get_absolute_url}}">{{ service.name }}</a></li>
