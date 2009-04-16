@@ -34,7 +34,7 @@ def browse(request):
 
 @login_required
 def mine(request):
-    my_services = Service.objects.all()
+    my_services = Service.objects.filter(owner=request.user)
     return render_to_response("mine.html", {
         'services' : my_services,
         }, RequestContext(request))
@@ -47,6 +47,7 @@ def edit(request, nick):
         print form.is_valid()
         if form.is_valid():
             form.save()
+            request.user.message_set.create(message='Service updated.')
             return HttpResponseRedirect('/service/mine/')
     else:
         form = ServiceForm(instance=service)
@@ -71,7 +72,8 @@ def submit(request):
             service.date_submitted = datetime.now()
             service.date_modified = datetime.now()
             service.save()
-            return HttpResponseRedirect(service.get_absolute_url())
+            request.user.message_set.create(message='Your service has been submitted for moderation.')
+            return HttpResponseRedirect('/service/mine')
     else:
         form = ServiceForm()
 
