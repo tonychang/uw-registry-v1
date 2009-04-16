@@ -46,7 +46,9 @@ def edit(request, nick):
         form = ServiceForm(instance=service, data=request.POST)
         print form.is_valid()
         if form.is_valid():
-            form.save()
+            form.save(commit=False)
+            service.date_modified = datetime.now()
+            service.save()
             request.user.message_set.create(message='Service updated.')
             return HttpResponseRedirect('/service/mine/')
     else:
