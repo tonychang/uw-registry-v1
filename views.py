@@ -27,7 +27,7 @@ def service(request, nick):
 def browse(request):
     allServices = Service.objects.all()
     return render_to_response("browse.html", {
-        'allServices' : allServices,
+        'all_services' : all_services,
         }, context_instance=RequestContext(request))
     
 
