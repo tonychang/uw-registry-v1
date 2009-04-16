@@ -28,9 +28,36 @@ def browse(request):
     allServices = Service.objects.all()
     return render_to_response("browse.html", {
         'allServices' : allServices,
-        }, context_instance=RequestContext(request))
+        }, RequestContext(request))
     
 
+@login_required
+def mine(request):
+    my_services = Service.objects.all()
+    return render_to_response("mine.html", {
+        'services' : my_services,
+        }, RequestContext(request))
+ 
+@login_required
+def edit(request, nick):
+    service = get_object_or_404(Service, nickname=nick, owner=request.user)
+    if request.method == 'POST':
+        form = ServiceForm(instance=service, data=request.POST)
+        print form.is_valid()
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(service.get_absolute_url())
+    else:
+        form = ServiceForm(instance=service)
+
+    return render_to_response(
+            "submit.html", 
+            {
+                'form' : form,
+            }, 
+            RequestContext(request))
+
+ 
 @login_required
 def submit(request):
 
@@ -52,4 +79,4 @@ def submit(request):
             {
                 'form' : form,
             }, 
-            context_instance=RequestContext(request))
+            RequestContext(request))
