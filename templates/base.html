@@ -6,6 +6,11 @@
     </head>
     <body>
         <h1>UW Service Registry</h1>
+
+	{% if user.is_authenticated%}
+	<div>Welcome {{user.username}}</div>
+	{% endif %}
+
         {% block body %}{%endblock%}
     </body>
 </html>
