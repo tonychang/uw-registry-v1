@@ -5,11 +5,17 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     </head>
     <body>
-        <h1>UW Service Registry</h1>
+        <h1><a href="/">UW Service Registry</a></h1>
 
-	{% if user.is_authenticated%}
-	<div>Welcome {{user.username}}</div>
-	{% endif %}
+        {% if user.is_authenticated%}
+        <div>Welcome {{user.username}}</div>
+        {% endif %}
+
+        <div>
+            <a href="/service/browse">Browse the services</a>
+            <a href="/service/add">Submit a new service</a> 
+        </div>
+
 
         {% block body %}{%endblock%}
     </body>

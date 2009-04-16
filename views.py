@@ -1,5 +1,5 @@
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from uwregistry.forms import ServiceForm
@@ -7,10 +7,22 @@ from uwregistry.models import Service
 from datetime import datetime
 
 def home(request):
-    return HttpResponse("First home")
+    return render_to_response(
+            'home.html',
+            {},
+            RequestContext(request),
+            )
 
 def service(request, nick):
-    return HttpResponse("Service page: %s" % nick)
+    #service must have this nick and be approved:
+    service = get_object_or_404(Service, nickname=nick, status=Service.APPROVE_STAT)
+    return render_to_response(
+            "service.html",
+            {
+                'service' : service,
+            },
+            RequestContext(request))
+
 
 def browse(request):
     allServices = Service.objects.all()
@@ -35,6 +47,9 @@ def submit(request):
     else:
         form = ServiceForm()
 
-    return render_to_response("submit.html", {
-        'form' : form,
-        }, context_instance=RequestContext(request))
+    return render_to_response(
+            "submit.html", 
+            {
+                'form' : form,
+            }, 
+            context_instance=RequestContext(request))
