@@ -25,7 +25,7 @@ def service(request, nick):
 
 
 def browse(request):
-    allServices = Service.objects.all()
+    all_services = Service.objects.filter(status=Service.APPROVE_STAT)
     return render_to_response("browse.html", {
         'all_services' : all_services,
         }, context_instance=RequestContext(request))
