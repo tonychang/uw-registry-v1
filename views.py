@@ -6,7 +6,11 @@ from uwregistry.forms import ServiceForm
 from datetime import datetime
 
 def home(request):
-    return HttpResponse("First home")
+    return render_to_response(
+            'home.html',
+            {},
+            RequestContext(request),
+            )
 
 
 def service(request, nick):
@@ -28,6 +32,9 @@ def submit(request):
     else:
         form = ServiceForm()
 
-    return render_to_response("submit.html", {
-        'form' : form,
-        }, context_instance=RequestContext(request))
+    return render_to_response(
+            "submit.html", 
+            {
+                'form' : form,
+            }, 
+            context_instance=RequestContext(request))
