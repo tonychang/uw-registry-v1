@@ -11,6 +11,12 @@
         <div>Welcome {{user.username}}</div>
         {% endif %}
 
+        <div>
+            <a href="/service/browse">Browse the services</a>
+            <a href="/service/add">Submit a new service</a> 
+        </div>
+
+
         {% block body %}{%endblock%}
     </body>
 </html>

@@ -1,0 +1,11 @@
+{%extends "base.html"%}
+
+{%block title%} - {{service.name}}{%endblock%}
+
+{%block body%}
+<h2>{{service.name}}</h2>
+<p>{{service.description}}</p>
+<div><b>Documentation:</b> <a href="{{service.doc_url}}">{{service.doc_url}}</a></div>
+<div><b>Support contact:</b> <a href="mailto:{{service.support_contact}}">{{service.support_contact}}</a></div>
+<div><b>Root of service:</b> <a href="{{service.root_url}}">{{service.root_url}}</a></div>
+{%endblock%}
