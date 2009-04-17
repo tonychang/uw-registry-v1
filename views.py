@@ -2,7 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
-from uwregistry.forms import ServiceForm
+from uwregistry.forms import *
 from uwregistry.models import Service
 from datetime import datetime
 
@@ -43,7 +43,7 @@ def mine(request):
 def edit(request, nick):
     service = get_object_or_404(Service, nickname=nick, owner=request.user)
     if request.method == 'POST':
-        form = ServiceForm(instance=service, data=request.POST)
+        form = ServiceEditForm(instance=service, data=request.POST)
         print form.is_valid()
         if form.is_valid():
             form.save(commit=False)
@@ -52,7 +52,7 @@ def edit(request, nick):
             request.user.message_set.create(message='Service updated.')
             return HttpResponseRedirect('/service/mine/')
     else:
-        form = ServiceForm(instance=service)
+        form = ServiceEditForm(instance=service)
 
     return render_to_response(
             "submit.html", 

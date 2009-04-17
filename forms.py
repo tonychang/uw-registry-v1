@@ -13,3 +13,10 @@ class ServiceForm(ModelForm):
         if nick == 'admin' or nick == 'service':
             raise forms.ValidationError("The nickname '%s' is not usable." % nick)
         return nick
+
+
+class ServiceEditForm(ServiceForm):
+    class Meta:
+        model = Service
+        exclude = ['owner', 'date_submitted', 'date_modified', 'status', 'nickname']
+
