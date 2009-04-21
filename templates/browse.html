@@ -7,6 +7,11 @@
     <ul>
     {% for service in all_services %}
     <li><a href="{{service.get_absolute_url}}">{{ service.name }}</a></li>
+    <p>
+    {% filter truncatewords:25 %}
+        {{service.description}}
+    {% endfilter %}
+    </p>
     {% endfor %}
     </ul>
 {% else %}
