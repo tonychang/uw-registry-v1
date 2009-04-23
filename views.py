@@ -25,7 +25,7 @@ def service(request, nick):
 
 
 def browse(request):
-    all_services = Service.objects.filter(status=Service.APPROVE_STAT)[:20]
+    all_services = Service.objects.extra(select={'lower_name': 'lower(name)'}).order_by('lower_name').filter(status=Service.APPROVE_STAT)[:10]
     return render_to_response("browse.html", {
         'all_services' : all_services,
         }, context_instance=RequestContext(request))
