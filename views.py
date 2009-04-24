@@ -30,8 +30,6 @@ def browse(request):
         'all_services' : all_services,
         }, context_instance=RequestContext(request))
 
-    
-
 @login_required
 def mine(request):
     my_services = Service.objects.filter(owner=request.user)
