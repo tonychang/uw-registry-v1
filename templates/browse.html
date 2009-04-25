@@ -3,9 +3,9 @@
 {%block title %}- Browse services{% endblock %}
 
 {%block body %}
-{% if all_services%}
+{% if services%}
     <ul>
-    {% for service in all_services %}
+    {% for service in services.object_list %}
     <li><a href="{{service.get_absolute_url}}">{{ service.name }}</a></li>
     <p>
     {% filter truncatewords:25 %}
@@ -14,8 +14,24 @@
     </p>
     {% endfor %}
     </ul>
+    <div class="pagination">
+    <span class="step-links">
+        {% if services.has_previous %}
+            <a href="?page={{ services.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ services.number }} of {{ services.paginator.num_pages }}.
+        </span>
+
+        {% if services.has_next %}
+            <a href="?page={{ services.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
 {% else %}
     <p>No services available.</p>
 {% endif %}
 
 {% endblock %}
+
