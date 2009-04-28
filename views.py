@@ -90,7 +90,10 @@ def submit(request):
             request.user.message_set.create(message='Your service has been submitted for moderation.')
             subject = 'New service "%s" submitted to teh registry' % service.name
             body = 'Please go to http://webservices.washington.edu/admin/uwregistry/service/%d to review it' % service.id
-            mail_admins(subject, body, fail_silently=False)
+            try:
+                mail_admins(subject, body, fail_silently=False)
+            except:
+                print "Email is failing!"
             return HttpResponseRedirect('/service/mine')
     else:
         form = ServiceForm()
