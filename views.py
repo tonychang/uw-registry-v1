@@ -7,6 +7,7 @@ from uwregistry.forms import *
 from uwregistry.models import Service
 from datetime import datetime
 from django.core.mail import mail_admins
+import sys
 
 def home(request):
     return render_to_response(
@@ -57,7 +58,6 @@ def edit(request, nick):
     service = get_object_or_404(Service, nickname=nick, owner=request.user)
     if request.method == 'POST':
         form = ServiceEditForm(instance=service, data=request.POST)
-        print form.is_valid()
         if form.is_valid():
             form.save(commit=False)
             service.date_modified = datetime.now()
@@ -93,7 +93,7 @@ def submit(request):
             try:
                 mail_admins(subject, body, fail_silently=False)
             except:
-                print "Email is failing!"
+                sys.stderr.write("Email is failing!\n")
             return HttpResponseRedirect('/service/mine')
     else:
         form = ServiceForm()
