@@ -4,4 +4,17 @@
 <p>Welcome to the UW Web Service Registry.  Please feel free to browse all applications or submit your own.</p>
 
 <!-- Latest 10 Submitted Applications -->
+<div id="toplist">
+<h2>Most Recent Activity</h2>
+{% if services %}
+    <ul>
+    {% for service in services %}
+    <li><a href="{{service.get_absolute_url}}">{{ service.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No services available.</p>
+{% endif %}
+</div>
+
 {%endblock%}

@@ -8,11 +8,13 @@ from uwregistry.models import Service
 from datetime import datetime
 
 def home(request):
+    top_services = Service.objects.order_by('date_submitted').filter(status=Service.APPROVE_STAT)[:10]
     return render_to_response(
-            'home.html',
-            {},
-            RequestContext(request),
-            )
+            "home.html",
+            {
+		'services' : top_services,
+	    },
+            RequestContext(request))
 
 def service(request, nick):
     #service must have this nick and be approved:
@@ -23,7 +25,6 @@ def service(request, nick):
                 'service' : service,
             },
             RequestContext(request))
-
 
 def browse(request):
     services_list = Service.objects.extra(select={'lower_name': 'lower(name)'}).order_by('lower_name').filter(status=Service.APPROVE_STAT)
