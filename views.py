@@ -6,6 +6,8 @@ from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from uwregistry.forms import *
 from uwregistry.models import Service
 from datetime import datetime
+from django.core.mail import mail_admins
+import sys
 
 def home(request):
     top_services = Service.objects.order_by('date_submitted').filter(status=Service.APPROVE_STAT)[:10]
@@ -57,7 +59,6 @@ def edit(request, nick):
     service = get_object_or_404(Service, nickname=nick, owner=request.user)
     if request.method == 'POST':
         form = ServiceEditForm(instance=service, data=request.POST)
-        print form.is_valid()
         if form.is_valid():
             form.save(commit=False)
             service.date_modified = datetime.now()
@@ -88,6 +89,12 @@ def submit(request):
             service.date_modified = datetime.now()
             service.save()
             request.user.message_set.create(message='Your service has been submitted for moderation.')
+            subject = 'New service "%s" submitted to teh registry' % service.name
+            body = 'Please go to http://webservices.washington.edu/admin/uwregistry/service/%d to review it' % service.id
+            try:
+                mail_admins(subject, body, fail_silently=False)
+            except:
+                sys.stderr.write("Email is failing!\n")
             return HttpResponseRedirect('/service/mine')
     else:
         form = ServiceForm()
