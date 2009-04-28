@@ -6,6 +6,7 @@ from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from uwregistry.forms import *
 from uwregistry.models import Service
 from datetime import datetime
+from django.core.mail import mail_admins
 
 def home(request):
     return render_to_response(
@@ -87,6 +88,9 @@ def submit(request):
             service.date_modified = datetime.now()
             service.save()
             request.user.message_set.create(message='Your service has been submitted for moderation.')
+            subject = 'New service "%s" submitted to teh registry' % service.name
+            body = 'Please go to http://webservices.washington.edu/admin/uwregistry/service/%d to review it' % service.id
+            mail_admins(subject, body, fail_silently=False)
             return HttpResponseRedirect('/service/mine')
     else:
         form = ServiceForm()
