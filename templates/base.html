@@ -3,27 +3,35 @@
     <head>
         <title>UW Service Registry {%block title%}{%endblock%}</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="main.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-        <h1><a href="/">UW Service Registry</a></h1>
-
-        {% if user.is_authenticated%}
-        <div>Welcome {{user.username}}</div>
-        {%if messages%}
-        {%for message in messages %}
-        *{{message}} 
-        {%endfor%}
-        {%endif%}
-        {% endif %}
-
-        <div>
-            <a href="/service/browse">Browse the services</a>
-            <a href="/service/add">Submit a new service</a> 
-            <a href="/service/mine">Manage your services</a> 
+        <div id="wrap"> 
+            <div id="center"></div>
+            <div id="link">  
+                <ul class="links">
+                <li><a href="/service/browse" class="left">Browse the services</a></li>
+                <li><a href="/service/add" class="left,border">Submit a new service</a></li>
+                <li><a href="/service/mine" class="left,border">>Manage your services</a></li>
+                <li class="right"><img src="tab_right.gif" /></li>
+                </ul>
+            </div>
+            <div id="content">
+            {% if user.is_authenticated%}
+            <div>Welcome {{user.username}}</div>
+            {%if messages%}
+            {%for message in messages %}
+            *{{message}} 
+            {%endfor%}
+            {%endif%}
+            {% endif %}
+    
+            <h1>Header Tag </h1>
+            <p>Paragraph Tag</p>
+    
+            {% block body %}{%endblock%}
+            </div>
         </div>
-
-
-        {% block body %}{%endblock%}
 
         <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
