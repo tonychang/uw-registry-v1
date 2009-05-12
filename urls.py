@@ -7,4 +7,6 @@ urlpatterns = patterns('uwregistry',
     (r'^service/mine/$', 'views.mine'),
     (r'^service/edit/(?P<nick>[-\w]+)/$', 'views.edit'),
     (r'^(?P<nick>[-\w]+)/$', 'views.service'),
+    (r'^site_media/(?P<path>.*)$', 'django.views.static.serve',
+        {'document_root': '/Users/cheiland/Documents/uwregistry/media'}),
 )
