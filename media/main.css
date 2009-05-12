@@ -5,6 +5,7 @@ body {
 	background-image: url(body_bg.gif);
 	background-repeat: repeat-y;
 	background-position: center
+	font-family: Helvetica, Arial, sans-serif;
 }
 #wrap {
 	background-image: url(bg.png);
