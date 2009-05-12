@@ -103,5 +103,6 @@ def submit(request):
             "submit.html", 
             {
                 'form' : form,
+                'new' : True,
             }, 
             RequestContext(request))

@@ -1,8 +1,9 @@
 {%extends "base.html"%}
 
-{%block title %}- Manage Service{% endblock %}
+{%block title %}- {%if new %}Submit{%else%}Manage{%endif%} Service{% endblock %}
 
 {%block body %}
+<h1>{%if new %}Submit{%else%}Manage{%endif%} Service</h1>
 <form method="post" action=".">
     <table>
         {{form.as_table}}
