@@ -103,7 +103,17 @@ body {
 	padding-top: 0px;
 	border: none;
 }
-p {
+label {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: normal;
+	letter-spacing: normal;
+	line-height: 1.4em;
+	color: #000000;
+	text-align:right;
+}
+p,.current,td {
 	font-family: Helvetica, Arial, sans-serif;
 	font-size: 15px;
 	font-style: normal;
@@ -133,3 +143,7 @@ h2 {
 	line-height: 1.2em;
 	color: #47435C;
 }
+a {
+	text-decoration:none;
+}
+
