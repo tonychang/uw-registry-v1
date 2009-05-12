@@ -24,6 +24,9 @@ body {
     padding-right:50px;
     padding-top:5px;
 }
+#messages {
+	color: #008800;
+}
 #toplist {
 	float:right;
 	background-color: #f9f4ec;
