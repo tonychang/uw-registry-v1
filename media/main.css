@@ -23,6 +23,17 @@ body {
     padding-right:50px;
     padding-top:5px;
 }
+#toplist {
+	float:right;
+	border:1px solid #f9f4ec;
+	margin:0;
+	padding:0;
+}
+#toplist ul {
+	list-style:none;
+}
+#toplist ul li {
+}
 #link {
 	height: 47px;
 	width: 815px;

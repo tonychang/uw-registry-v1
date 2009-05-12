@@ -3,11 +3,10 @@
 {%block body %}
 
 <h1>Home</h1>
-<p>Welcome to the UW Web Service Registry.  Please feel free to browse all applications or submit your own.</p>
 
 <!-- Latest 10 Submitted Applications -->
 <div id="toplist">
-<h1>Most Recent Activity</h1>
+<h2>Most Recent Activity</h2>
 {% if services %}
     <ul>
     {% for service in services %}
@@ -18,5 +17,12 @@
     <p>No services available.</p>
 {% endif %}
 </div>
+
+<p>Welcome to the UW Web Service Registry.  Please feel free to browse all applications or submit your own.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean magna sapien, porta in luctus eget, facilisis et mauris. Donec orci nulla, viverra non vulputate sit amet, tristique quis tortor. Proin neque massa, sollicitudin eu ullamcorper eu, pharetra in metus. Nullam blandit sapien eget massa posuere placerat. Nam velit nulla, rhoncus at tempus eu, posuere quis velit. Nunc sit amet velit ut justo eleifend ullamcorper. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam erat volutpat. Sed tincidunt quam id quam faucibus vehicula. Vestibulum lectus velit, tempor quis porttitor ut, dignissim nec turpis. Vivamus fermentum nisi vel augue condimentum sit amet luctus dui sagittis. Cras eget turpis nulla. Nunc pellentesque, purus id malesuada lobortis, metus magna adipiscing justo, non feugiat augue neque id mauris. Quisque ac mauris at leo ullamcorper vestibulum ut at erat. Nulla tellus nisl, rhoncus in feugiat sit amet, eleifend id nibh. Integer id arcu nisi, eu facilisis dui. Etiam eros ligula, adipiscing eu vulputate nec, gravida commodo risus.</p>
+
+<p>Nullam porttitor convallis dui id vulputate. Integer volutpat, augue vel posuere porttitor, risus massa tristique urna, non sodales felis sapien nec diam. Aliquam vel velit metus, quis congue lectus. Aenean vulputate cursus adipiscing. Nulla tincidunt, quam id consequat tempor, tellus arcu lobortis neque, sit amet iaculis mi nunc ultricies eros. Fusce in lorem magna, ut tincidunt massa. Donec in consectetur massa. Praesent elit nisi, molestie vitae viverra eget, mattis a diam. Proin consequat, nibh quis vehicula fringilla, nulla nunc aliquet leo, sit amet auctor lectus quam nec lectus. Mauris condimentum nunc nulla, in vehicula risus.</p> 
+
 
 {%endblock%}
