@@ -25,14 +25,17 @@ body {
 }
 #toplist {
 	float:right;
-	border:1px solid #f9f4ec;
-	margin:0;
-	padding:0;
+	background-color: #f9f4ec;
+	margin:0 4px;
+	padding:0 4px;
 }
 #toplist ul {
 	list-style:none;
 }
-#toplist ul li {
+#toplist h3 {
+	padding:0;
+	margin:0;
+	color:#47435C;
 }
 #link {
 	height: 47px;
@@ -102,7 +105,7 @@ body {
 }
 p {
 	font-family: Helvetica, Arial, sans-serif;
-	font-size: 12px;
+	font-size: 15px;
 	font-style: normal;
 	font-weight: normal;
 	text-transform: normal;
