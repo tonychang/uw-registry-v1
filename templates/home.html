@@ -2,21 +2,11 @@
 
 {%block body %}
 
-
 <h2>The UW Webservice Registry provides a list of web services that you can make use of,<br/>and a place to advertise and communicate your web service.</h2>
-
-<p>The registry is open to all UW people - it is intended as a public resource that serves two main goals. First, to allow UW people who maintain web services to make them official - registration will provide services with a reserved namespace and make them visible to campus technology coordinators. Second, the registry allows UW people to browse for, locate and learn about applications that may be useful to them.</p>
-
-<h2>Looking for a service?</h2>
-<p>If you are looking for a source of data or functionality on campus, please <a href="/service/browse/">browse the registry.</a> You'll find information on what applications are availabe, who runs them, and how to use them.</p>
-
-<h2>Have a service to share?</h2>
-<p>Please <a href="/service/add/">register it!</a> This is the easiest way to get exposure for your application, and the registry maintainers will help you with all the details.
-
 
 <!-- Latest 10 Submitted Applications -->
 <div id="toplist">
-<h1>Most Recent Activity</h1>
+<h3>Most Recent Activity</h3>
 {% if services %}
     <ul>
     {% for service in services %}
@@ -27,5 +17,13 @@
     <p>No services available.</p>
 {% endif %}
 </div>
+
+<p>The registry is open to all UW people - it is intended as a public resource that serves two main goals. First, to allow UW people who maintain web services to make them official - registration will provide services with a reserved namespace and make them visible to campus technology coordinators. Second, the registry allows UW people to browse for, locate and learn about applications that may be useful to them.</p>
+
+<h2>Looking for a service?</h2>
+<p>If you are looking for a source of data or functionality on campus, please <a href="/service/browse/">browse the registry.</a> You'll find information on what applications are availabe, who runs them, and how to use them.</p>
+
+<h2>Have a service to share?</h2>
+<p>Please <a href="/service/add/">register it!</a> This is the easiest way to get exposure for your application, and the registry maintainers will help you with all the details.
 
 {%endblock%}
