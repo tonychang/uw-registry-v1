@@ -6,8 +6,18 @@
         <link href="/statics/main.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-        <div id="wrap"> 
-            <div id="center"></div>
+        <div id="wrap">
+            <div id="center"><div id="headertext-right">
+            {% if user.is_authenticated%}
+            Welcome {{user.username}}
+            {%if messages%}
+            {%for message in messages %}
+            *{{message}} 
+            {%endfor%}
+            {%endif%}
+            {% endif %}
+            </div>
+            </div>
             <div id="link">  
                 <ul class="links">
                 <li><a href="/service/browse" class="left">Browse the services</a></li>
@@ -17,14 +27,6 @@
                 </ul>
             </div>
             <div id="content">
-            {% if user.is_authenticated%}
-            <div>Welcome {{user.username}}</div>
-            {%if messages%}
-            {%for message in messages %}
-            *{{message}} 
-            {%endfor%}
-            {%endif%}
-            {% endif %}
     
             {% block body %}{%endblock%}
             </div>
