@@ -109,3 +109,13 @@ h1 {
 	line-height: 1.2em;
 	color: #47435C;
 }
+h2 {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: bold;
+	text-transform: normal;
+	letter-spacing: -1px;
+	line-height: 1.2em;
+	color: #47435C;
+}
