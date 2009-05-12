@@ -12,12 +12,16 @@ body {
 	height: 500px;
 }
 #center {
-	height: 129px;
+	height: 126px;
 	width: 985px;
 	margin-right: auto;
 	margin-left: auto;
 	background-image: url(banner.gif);
 	background-repeat: no-repeat;
+    background-position:center;
+    text-align:right;
+    padding-right:50px;
+    padding-top:5px;
 }
 #link {
 	height: 47px;
@@ -27,7 +31,7 @@ body {
 	background-image: url(tab_left.gif);
 	background-repeat: no-repeat;
 	padding: 0;
-	margin-top: 0px;
+	margin-top: -2px;
 	overflow: hidden;
 }
 .links li {
