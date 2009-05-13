@@ -8,16 +8,13 @@
     <body>
         <div id="wrap"> 
             <div id="center">
-                <a id="logoUW" href="http://www.washington.edu"></a>
-                <div id="center">
-                    <a id="logoUW" href="http://www.washington.edu/"></a>
-                    <span id="nameBlock">
-                    {% if user.is_authenticated%}
-                    {{user.username}}
-                    {% endif %}
-                    </span>
-                    <a id="logoRegistry" href="http://tesla.eplt.washington.edu/"></a>
-                </div>
+                <a id="logoUW" href="http://www.washington.edu/"></a>
+                <span id="nameBlock">
+                {% if user.is_authenticated%}
+                {{user.username}}
+                {% endif %}
+                </span>
+                <a id="logoRegistry" href="http://tesla.eplt.washington.edu/"></a>
             </div>
             <div id="link">  
                 <ul class="links">
