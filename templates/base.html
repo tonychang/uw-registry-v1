@@ -7,11 +7,18 @@
     </head>
     <body>
         <div id="wrap"> 
-            <a href="/"><div id="center">
+            <div id="center">
+                <a id="logoUW" href="http://www.washington.edu"></a>
+                <div id="center">
+                    <a id="logoUW" href="http://www.washington.edu/"></a>
+                    <span id="nameBlock">
                     {% if user.is_authenticated%}
-                    <div>Welcome {{user.username}}</div>
+                    {{user.username}}
                     {% endif %}
-            </div></a>
+                    </span>
+                    <a id="logoRegistry" href="http://tesla.eplt.washington.edu/"></a>
+                </div>
+            </div>
             <div id="link">  
                 <ul class="links">
                     <li><a href="/service/browse" class="left">Browse the services</a></li>

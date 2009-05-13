@@ -10,7 +10,6 @@ body {
 #wrap {
 	background-image: url(bg.png);
 	background-repeat: repeat-x;
-	height: 500px;
 }
 #center {
 	height: 126px;
@@ -18,7 +17,6 @@ body {
 	background-repeat: no-repeat;
 	background-position:center;
 	text-align:right;
-	padding-right:50px;
 	padding-top:5px;
 }
 #messages {
@@ -146,4 +144,21 @@ h2 {
 }
 a {
 	text-decoration:none;
+}
+#nameBlock {
+	display: block;
+	width: 920px;
+	margin: 20px auto 0 auto;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #FFFFFF;
+}
+#logoRegistry {
+	display: block;
+	height: 45px;
+}
+
+#logoUW {
+	display: block;
+	height: 30px;
 }
