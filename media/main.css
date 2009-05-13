@@ -102,6 +102,9 @@ body {
 	padding-top: 0px;
 	border: none;
 }
+table tr th {
+	text-align:right;
+}
 label {
 	font-family: Helvetica, Arial, sans-serif;
 	font-size: 16px;
@@ -110,7 +113,6 @@ label {
 	letter-spacing: normal;
 	line-height: 1.4em;
 	color: #000000;
-	text-align:right;
 }
 p,.current,td {
 	font-family: Helvetica, Arial, sans-serif;
