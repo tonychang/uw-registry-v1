@@ -3,46 +3,47 @@
     <head>
         <title>UW Service Registry {%block title%}{%endblock%}</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <link href="/media/main.css" rel="stylesheet" type="text/css" />
+        <link href="/statics/main.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <div id="wrap"> 
-            <div id="center"></div>
+            <a href="/"><div id="center">
+                    {% if user.is_authenticated%}
+                    <div>Welcome {{user.username}}</div>
+                    {% endif %}
+            </div></a>
             <div id="link">  
                 <ul class="links">
-                <li><a href="/service/browse" class="left">Browse the services</a></li>
-                <li><a href="/service/add" class="left,border">Submit a new service</a></li>
-                <li><a href="/service/mine" class="left,border">>Manage your services</a></li>
-                <li class="right"><img src="tab_right.gif" /></li>
+                    <li><a href="/service/browse" class="left">Browse the services</a></li>
+                    <li><a href="/service/add" class="left,border">Submit a new service</a></li>
+                    <li><a href="/service/mine" class="left,border">Manage your services</a></li>
+                    <li class="right"><img src="/statics/tab_right.gif" /></li>
                 </ul>
             </div>
             <div id="content">
-            {% if user.is_authenticated%}
-            <div>Welcome {{user.username}}</div>
-            {%if messages%}
-            {%for message in messages %}
-            *{{message}} 
-            {%endfor%}
-            {%endif%}
-            {% endif %}
-    
-            <h1>Header Tag </h1>
-            <p>Paragraph Tag</p>
-    
-            {% block body %}{%endblock%}
+                <div id="messages">
+                    {%if messages%}
+                    {%for message in messages %}
+                    {{message}} 
+                    {%endfor%}
+                    {%endif%}
+                </div>
+                <div id="body">
+                    {% block body %}{%endblock%}
+                </div>
             </div>
         </div>
 
         <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-        </script>
-        <script type="text/javascript">
-            try {
-                var pageTracker = _gat._getTracker("UA-8592171-1");
-                pageTracker._trackPageview();
-            } catch(err) {}
-        </script>
-    </body>
-</html>
+            </script>
+            <script type="text/javascript">
+                try {
+                    var pageTracker = _gat._getTracker("UA-8592171-1");
+                    pageTracker._trackPageview();
+                } catch(err) {}
+            </script>
+        </body>
+    </html>
 
