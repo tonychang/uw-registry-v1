@@ -7,7 +7,7 @@
 <h1>Browse Services</h1>
     <ul>
     {% for service in services.object_list %}
-    <li><a href="{{service.get_absolute_url}}">{{ service.name }}</a></li>
+    <li><a href="{{service.get_absolute_url}}" class="{{service.nickname}}">{{ service.name }}</a></li>
     <p>
     {% filter truncatewords:25 %}
         {{service.description}}
