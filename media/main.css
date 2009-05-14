@@ -26,9 +26,9 @@ body {
 	float:right;
 	margin:0 0 0 30px;
 	padding:25px 10px 60px 26px;
-	background-color: #f9f4ec;
-	margin:0 4px;
-	padding:0 4px;
+	width: 215px;
+	background-image: url(sidebarBg.gif);
+	background-repeat: no-repeat;
 }
 #toplist ul {
 	list-style:none;
@@ -142,6 +142,7 @@ h2 {
 }
 a {
 	color: #3C2A5E;
+	text-decoration: none;
 }
 #content a:visited {
 	color: #58410A;
