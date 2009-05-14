@@ -166,7 +166,7 @@ a {
 }
 /** http://www.alistapart.com/articles/prettyaccessibleforms **/
 form.cmxform {
-	width: 680px;
+	width: 650px;
 	font-size: 1.1em;
 	color: #333;
 	}
@@ -197,6 +197,7 @@ form.cmxform fieldset li span {
 	font-weight: normal;
 	letter-spacing: normal;
 	font-size: 10px;
+	margin-left:137px;
 	}
 form.cmxform fieldset { margin-bottom: 10px; }
 	

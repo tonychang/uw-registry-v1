@@ -6,15 +6,17 @@
 <h1>{%if new %}Submit{%else%}Manage{%endif%} Service</h1>
 <form action="." method="post" class="cmxform">
 <fieldset>
-<legend></legend>
+<legend>Service</legend>
 <ol>
 {% for field in form %}
     <li>
-        {{ field.label_tag }} 
-        {% if field.field.required %}<em>*</em>{% endif %} 
-        {{ field }}
-        <span class="helptxt">{{ field.help_text }}</span>
-        {{ field.errors }}
+           {{ field.label_tag }} 
+           {% if field.field.required %}
+           <em>*</em>
+           {% endif %} 
+           {{ field }}<br />
+           <span>{{ field.help_text }}</span>
+           {{ field.errors }}
     </li>
 {% endfor %}
 </ol>
