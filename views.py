@@ -89,7 +89,7 @@ def submit(request):
             service.date_modified = datetime.now()
             service.save()
             request.user.message_set.create(message='Your service has been submitted for moderation.')
-            subject = 'New service "%s" submitted to teh registry' % service.name
+            subject = 'New service "%s" submitted to the registry' % service.name
             body = 'Please go to http://webservices.washington.edu/admin/uwregistry/service/%d to review it' % service.id
             try:
                 mail_admins(subject, body, fail_silently=False)

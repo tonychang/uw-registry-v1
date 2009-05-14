@@ -102,19 +102,10 @@ body {
 	padding-top: 0px;
 	border: none;
 }
-table tr th {
-	text-align:right;
+.errorlist {
+	color: #FF0000;
 }
-label {
-	font-family: Helvetica, Arial, sans-serif;
-	font-size: 16px;
-	font-style: normal;
-	font-weight: normal;
-	letter-spacing: normal;
-	line-height: 1.4em;
-	color: #000000;
-}
-p,.current,td {
+p,.current {
 	font-family: Helvetica, Arial, sans-serif;
 	font-size: 15px;
 	font-style: normal;
@@ -164,3 +155,88 @@ a {
 	display: block;
 	height: 30px;
 }
+/** http://www.alistapart.com/articles/prettyaccessibleforms **/
+form.cmxform {
+	width: 680px;
+	font-size: 1.1em;
+	color: #333;
+	}
+	
+form.cmxform legend { padding-left: 0; }
+	
+form.cmxform legend,
+form.cmxform label { 
+	color: #333; 
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: normal;
+	letter-spacing: normal;
+	line-height: 1.4em;
+	text-align: right;
+}
+form.cmxform fieldset {
+	border: none;
+	}
+	
+form.cmxform fieldset fieldset { background: none; }
+	
+form.cmxform fieldset li {
+	padding: 5px 10px 7px;
+	}
+form.cmxform fieldset li span {
+	font-weight: normal;
+	letter-spacing: normal;
+	font-size: 10px;
+	}
+form.cmxform fieldset { margin-bottom: 10px; }
+	
+form.cmxform legend {
+	padding: 0 2px;
+	font-weight: bold;
+	_margin: 0 -7px; /* IE Win */
+	}
+	
+form.cmxform label {
+	display: inline-block;
+	line-height: 1.8;
+	vertical-align: top;
+	}
+	
+form.cmxform fieldset ol {
+	margin: 0;
+	padding: 0;
+	}
+	
+form.cmxform fieldset li {
+	list-style: none;
+	padding: 5px;
+	margin: 0;
+	}
+	
+form.cmxform fieldset fieldset {
+	border: none;
+	margin: 3px 0 0;
+	}
+	
+form.cmxform fieldset fieldset legend {
+	padding: 0 0 5px;
+	font-weight: normal;
+	}
+	
+form.cmxform fieldset fieldset label {
+	display: block;
+	width: auto;
+	}
+
+form.cmxform em {
+	font-weight: bold;
+	font-style: normal;
+	color: #f00;
+	vertical-align:top;
+	}
+
+form.cmxform label { width: 120px; } /* Width of labels */
+form.cmxform fieldset fieldset label { margin-left: 123px; } /* Width plus 3 (html space) */
+
+/*\*//*/ form.cmxform legend { display: inline-block; } /* IE Mac legend fix */
