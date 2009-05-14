@@ -24,6 +24,8 @@ body {
 }
 #toplist {
 	float:right;
+	margin:0 0 0 30px;
+	padding:25px 10px 60px 26px;
 	background-color: #f9f4ec;
 	margin:0 4px;
 	padding:0 4px;
@@ -35,6 +37,9 @@ body {
 	padding:0;
 	margin:0;
 	color:#47435C;
+
+	font-size: 18px;
+
 }
 #link {
 	height: 47px;
@@ -136,7 +141,10 @@ h2 {
 	color: #47435C;
 }
 a {
-	text-decoration:none;
+	color: #3C2A5E;
+}
+#content a:visited {
+	color: #58410A;
 }
 #nameBlock {
 	display: block;
