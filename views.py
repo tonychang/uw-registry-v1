@@ -10,7 +10,7 @@ from django.core.mail import mail_admins
 import sys
 
 def home(request):
-    top_services = Service.objects.order_by('date_submitted').filter(status=Service.APPROVE_STAT)[:10]
+    top_services = Service.objects.order_by('-date_submitted').filter(status=Service.APPROVE_STAT)[:10]
     return render_to_response(
             "home.html",
             {
