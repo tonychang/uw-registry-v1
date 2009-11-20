@@ -3,6 +3,20 @@
 {%block title %}- {%if new %}Submit{%else%}Manage{%endif%} Service{% endblock %}
 
 {%block body %}
+
+<div id="toplist">
+<h3>What can go into the Registry?</h3>
+
+      <p>Accessible over the web (aka Http)</p>
+      <p>Contains UW data</p>
+      <p>The content is machine parseable (json,xml,xhtml)</p>
+
+<h3>What should NOT go into the Registry?</h3>
+
+      <p>Oren's Blog RSS/Atom feed</p>
+      <p>A link to an HTML page that is NOT XHTML strict</p>
+
+</div>
 <h1>{%if new %}Submit{%else%}Manage{%endif%} Service</h1>
 <form action="." method="post" class="cmxform">
 <fieldset>
