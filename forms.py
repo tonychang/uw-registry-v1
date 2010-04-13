@@ -6,7 +6,7 @@ from uwregistry.models import Service
 class ServiceForm(ModelForm):
     class Meta:
         model = Service
-        exclude = ['owner', 'date_submitted', 'date_modified', 'status']
+        exclude = ['owner', 'date_submitted', 'date_modified', 'status', 'notes']
 
     def clean_nickname(self):
         nick = self.cleaned_data['nickname']
