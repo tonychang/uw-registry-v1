@@ -36,7 +36,7 @@ class Service (models.Model):
     
     notes = models.TextField(
             max_length=10000, 
-            help_text="Area to place extra notes on this service such as why does this service git approved or denied",
+            help_text="Area to place extra notes related to this service",
             )
 
     owner = models.ForeignKey(User,) 

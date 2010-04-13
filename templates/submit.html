@@ -16,7 +16,6 @@
 <h1>{%if new %}Submit{%else%}Manage{%endif%} Service</h1>
 <form action="." method="post" class="cmxform">
 <fieldset>
-<legend>Service</legend>
 <ol>
 {% for field in form %}
     <li>
@@ -31,6 +30,6 @@
 {% endfor %}
 </ol>
     <p><input type="submit" value="Submit service" /></p>
-</legend>
+
 </form>
 {% endblock %}
