@@ -7,5 +7,6 @@
 <p class="description">{{service.description}}</p>
 <div><b>Documentation:</b>   <a class="documentation" href="{{service.doc_url}}">{{service.doc_url}}</a></div>
 <div><b>Support contact:</b> <a class="support" href="mailto:{{service.support_contact}}">{{service.support_contact}}</a></div>
-<div><b>Root of service:</b> <a class="resource" href="{{service.root_url}}">{{service.root_url}}</a></div>
+{% if service.root_url_hidden != 1 %} <div><b>Root of service:</b> <a class="resource" href="{{service.root_url}}">{{service.root_url}}</a></div>
+{% endif %}
 {%endblock%}

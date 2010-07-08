@@ -54,6 +54,10 @@ class Service (models.Model):
 			verify_exists=False,
             )
 
+    root_url_hidden = models.BooleanField(
+            help_text="Check this if you want your web services hidden to the public",
+            )
+
     status = models.IntegerField(
             choices=STATUS_CHOICES, 
             help_text="Choose from: submitted, denied, approved",

@@ -47,14 +47,14 @@ def browse(request):
         'services' : services,
         }, context_instance=RequestContext(request))
 
-@login_required
+
 def mine(request):
     my_services = Service.objects.filter(owner=request.user)
     return render_to_response("mine.html", {
         'services' : my_services,
         }, RequestContext(request))
  
-@login_required
+
 def edit(request, nick):
     service = get_object_or_404(Service, nickname=nick, owner=request.user)
     if request.method == 'POST':
@@ -76,7 +76,7 @@ def edit(request, nick):
             RequestContext(request))
 
  
-@login_required
+
 def submit(request):
 
     if request.method == 'POST':
