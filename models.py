@@ -47,6 +47,7 @@ class Service (models.Model):
 
     doc_url = models.URLField(
             help_text="Type in the url to your service documentation",
+			verify_exists=False,
             )
 
     root_url = models.URLField(
