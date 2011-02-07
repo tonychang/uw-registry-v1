@@ -35,7 +35,8 @@ class Service (models.Model):
             )
     
     notes = models.TextField(
-            max_length=10000, 
+            max_length=10000,
+            null=True,
             help_text="Area to place extra notes related to this service",
             )
 
@@ -67,6 +68,8 @@ class Service (models.Model):
     date_submitted = models.DateTimeField()
 
     date_modified = models.DateTimeField()
+
+    in_development = models.BooleanField(default=False)
 
     #methods
     def __unicode__ (self):
