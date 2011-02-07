@@ -2,6 +2,11 @@ from django.conf.urls.defaults import *
 
 urlpatterns = patterns('uwregistry',
     (r'^$', 'views.home'),
+
+    (r'^learn$', 'views.learn'),
+    (r'^discover$', 'views.discover'),
+    (r'^connect$', 'views.connect'),
+                       
     (r'^service/add/$', 'views.submit'),
     (r'^service/browse/$', 'views.browse'),
     (r'^service/mine/$', 'views.mine'),

@@ -18,6 +18,15 @@ def home(request):
 	    },
             RequestContext(request))
 
+def learn(request):
+    return render_to_response("learn.html")
+
+def discover(request):
+    return render_to_response("discover.html")
+
+def connect(request):
+    return HttpResponseRedirect('/service/browse')
+
 def service(request, nick):
     #service must have this nick and be approved:
     service = get_object_or_404(Service, nickname=nick, status=Service.APPROVE_STAT)
