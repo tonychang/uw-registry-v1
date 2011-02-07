@@ -32,7 +32,7 @@ def service(request, nick):
 
 def browse(request):
     services_list = Service.objects.extra(select={'lower_name': 'lower(name)'}).order_by('lower_name').filter(status=Service.APPROVE_STAT)
-    paginator = Paginator(services_list, 20)
+    paginator = Paginator(services_list, 10)
     # Make sure page request is an int. If not, deliver first page.
     try:
         page = int(request.GET.get('page', '1'))
@@ -46,6 +46,21 @@ def browse(request):
         services = paginator.page(paginator.num_pages)
 
     return render_to_response("browse.html", {
+        'services' : services,
+        }, context_instance=RequestContext(request))
+
+def whatsnext(request):
+    services = Service.objects.filter(status=Service.APPROVE_STAT).order_by('date_submitted').reverse().filter(in_development=True)
+
+    return render_to_response("whatsnext.html", {
+        'services' : services,
+        }, context_instance=RequestContext(request))
+
+
+def recent_activity(request):
+    services = Service.objects.filter(status=Service.APPROVE_STAT).order_by('date_modified').reverse()
+
+    return render_to_response("recent.html", {
         'services' : services,
         }, context_instance=RequestContext(request))
 

@@ -1,0 +1,17 @@
+{%extends "base.html"%}
+
+{%block title %}- Upcoming Services{% endblock %}
+
+{%block body %}
+{% if services%}
+<h1>Upcoming Services</h1>
+    <ul>
+    {% for service in services %}
+    <li><a href="{{service.get_absolute_url}}" class="{{service.nickname}}">{{ service.name }}</a></li>
+   {% endfor %}
+    </ul>
+{% else %}
+    <p>No services available.</p>
+{% endif %}
+
+{% endblock %}
