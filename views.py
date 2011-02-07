@@ -30,7 +30,7 @@ def service(request, nick):
 
 def browse(request):
     services_list = Service.objects.extra(select={'lower_name': 'lower(name)'}).order_by('lower_name').filter(status=Service.APPROVE_STAT)
-    paginator = Paginator(services_list, 20)
+    paginator = Paginator(services_list, 10)
     # Make sure page request is an int. If not, deliver first page.
     try:
         page = int(request.GET.get('page', '1'))
