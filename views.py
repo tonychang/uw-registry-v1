@@ -5,6 +5,7 @@ from django.template import RequestContext
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from uwregistry.forms import *
 from uwregistry.models import Service
+from uwregistry.rss import RSS
 from datetime import datetime
 from django.core.mail import mail_admins
 import sys
@@ -14,9 +15,10 @@ def home(request):
     return render_to_response(
             "home.html",
             {
-		'services' : top_services,
-	    },
-            RequestContext(request))
+                'services' : top_services, 'rss' : RSS()
+	        },
+            RequestContext(request)
+    )
 
 def learn(request):
     return render_to_response("learn.html")

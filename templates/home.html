@@ -36,4 +36,12 @@
 <h2>Need help with the registry?</h2>
 <p>Give us a holla using our support email.<a href="mailto:wsregistry-support@u.washington.edu"> wsregistry-support@u.washington.edu</a> </p>
 
+<div>
+{% load cache %}
+{% cache 0 rss_entry %}
+{% for entry in rss.entries %}
+	<div  class="rss" id="rss_entry"><a  class="rss" id="rss_link" href="{{ entry.link }}">{{ entry.title }}</a> - <div  class="rss" id="rss_date">{{ entry.updated_parsed }}</div></div>
+{% endfor %}
+{% endcache %}
+</div>
 {%endblock%}
