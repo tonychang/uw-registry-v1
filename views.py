@@ -47,6 +47,21 @@ def browse(request):
         'services' : services,
         }, context_instance=RequestContext(request))
 
+def whatsnext(request):
+    services = Service.objects.filter(status=Service.APPROVE_STAT).order_by('date_submitted').reverse().filter(in_development=True)
+
+    return render_to_response("whatsnext.html", {
+        'services' : services,
+        }, context_instance=RequestContext(request))
+
+
+def recent_activity(request):
+    services = Service.objects.filter(status=Service.APPROVE_STAT).order_by('date_modified').reverse()
+
+    return render_to_response("recent.html", {
+        'services' : services,
+        }, context_instance=RequestContext(request))
+
 
 @login_required
 def mine(request):
