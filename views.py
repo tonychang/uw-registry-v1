@@ -1,11 +1,13 @@
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect,HttpResponseServerError
 from django.shortcuts import render_to_response, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
+from django.views.decorators.cache import never_cache
 from uwregistry.forms import *
 from uwregistry.models import Service
 from uwregistry.rss import RSS
+from uwregistry.user_voice import UserVoice
 from datetime import datetime
 from django.core.mail import mail_admins
 import sys
@@ -15,7 +17,35 @@ def home(request):
     return render_to_response(
             "home.html",
             {
-                'services' : top_services, 'rss' : RSS()
+                'services' : top_services
+	        },
+            RequestContext(request)
+    )
+
+@never_cache
+def user_voice_view(request):
+    user_voice = None
+    try:
+        user_voice = UserVoice()
+        user_voice.retrieve_data()
+    except:
+        import traceback
+        traceback.print_exc(file=sys.stderr)
+        return HttpResponseServerError()
+    return render_to_response(
+            "uservoice.html",
+            {
+                'uservoice' : user_voice
+	        },
+            RequestContext(request)
+    )
+
+@never_cache
+def rss_view(request):
+    return render_to_response(
+            "rss.html",
+            {
+                'rss' : RSS()
 	        },
             RequestContext(request)
     )

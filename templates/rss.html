@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div>
+{% load cache %}
+{% cache 0 rss_entry %}
+{% for entry in rss.entries %}
+	<div  class="rss" id="rss_entry"><a  class="rss" id="rss_link" href="{{ entry.link }}">{{ entry.title }}</a> - <div  class="rss" id="rss_date">{{ entry.updated_parsed }}</div></div>
+{% endfor %}
+{% endcache %}
+</div>
+{% endblock %}
