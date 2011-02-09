@@ -13,10 +13,6 @@ import datetime
 import time
 
 from django.conf import settings
-try:
-    settings.configure(DEBUG=True, TEMPLATE_DEBUG=True, BLOG_RSS_FEED = 'http://depts.washington.edu/ontheroa/?feed=rss2')
-except:
-    pass
 
 class RSS(object):
     def __init__(self, feed_url=settings.BLOG_RSS_FEED):
@@ -30,11 +26,12 @@ class RSS(object):
     def entries( self ):
         if self.feed == None:
             self.parse()
-        print "HERE"
         try:
             return self.feed['entries']
         except:
-            print "failed"
+            import traceback
+            traceback.print_exc(file=sys.stderr)
+
     @staticmethod
     def time_tuple_to_datetime( timetuple ):
         return datetime.datetime.fromtimestamp(time.mktime(timetuple))
@@ -49,4 +46,5 @@ class rss(unittest.TestCase):
 
     
 if __name__ == '__main__':
+    settings.configure(DEBUG=True, TEMPLATE_DEBUG=True, BLOG_RSS_FEED = 'http://depts.washington.edu/ontheroa/?feed=rss2')
     unittest.main()

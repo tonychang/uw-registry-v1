@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block body %}
+<table>
+{% for suggestion in uservoice.suggestions %}
+	<tr><td class="votes">Votes: {{ suggestion.vote_count }}/{{ suggestion.supporter_count }}</td><td>{{ suggestion.title }}</td><td>created: {{ suggestion.created_at }}</td><td>last update: {{ suggestion.updated_at }}</td></tr>
+{%endfor%}
+</table>
+{% endblock %}
