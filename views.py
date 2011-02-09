@@ -2,6 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect,HttpResponseServerErr
 from django.shortcuts import render_to_response, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
+from django import template
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.views.decorators.cache import never_cache
 from uwregistry.forms import *
@@ -12,10 +13,11 @@ from datetime import datetime
 from django.core.mail import mail_admins
 import sys
 
+
 def home(request):
     top_services = Service.objects.order_by('-date_submitted').filter(status=Service.APPROVE_STAT)[:10]
     return render_to_response(
-            "home.html",
+            "index.html",
             {
                 'services' : top_services
 	        },
@@ -51,6 +53,15 @@ def rss_view(request):
     )
 
 #@never_cache
+def learn(request):
+    return render_to_response("learn.html")
+
+def discover(request):
+    return render_to_response("discover.html")
+
+def connect(request):
+    return HttpResponseRedirect('/service/browse')
+
 def service(request, nick):
     #service must have this nick and be approved:
     service = get_object_or_404(Service, nickname=nick, status=Service.APPROVE_STAT)
