@@ -53,10 +53,17 @@ def rss_view(request):
     )
 
 def learn(request):
-    return render_to_response("learn.html")
+    return render_to_response(
+        "learn.html"
+        )
 
 def discover(request):
-    return render_to_response("discover.html")
+    upcoming_services = Service.objects.filter(status=Service.APPROVE_STAT).order_by('date_submitted').reverse().filter(in_development=True)
+    
+    return render_to_response("discover.html",
+        { 'upcoming_services': upcoming_services },
+        RequestContext(request)
+        )
 
 def connect(request):
     return HttpResponseRedirect('/service/browse')
