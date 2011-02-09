@@ -2,6 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect,HttpResponseServerErr
 from django.shortcuts import render_to_response, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
+from django import template
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.views.decorators.cache import never_cache
 from uwregistry.forms import *
@@ -11,6 +12,7 @@ from uwregistry.user_voice import UserVoice
 from datetime import datetime
 from django.core.mail import mail_admins
 import sys
+
 
 def home(request):
     top_services = Service.objects.order_by('-date_submitted').filter(status=Service.APPROVE_STAT)[:10]
