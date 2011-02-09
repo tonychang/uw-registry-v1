@@ -1,0 +1,7 @@
+<ul class='tweet-list'>
+{% for tweet in tweets %}
+  <li class='tweet-item'><span
+  class='tweet-user'>{{tweet.from_user}}</span><span
+  class='tweet-separator'> - </span><span class='tweet-text'>{{tweet.text}}</span></li>
+{% endfor %}
+</ul>

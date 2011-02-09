@@ -1,6 +1,7 @@
 {%extends "base.html"%}
 
 {% load whats_new %}
+{% load twitter_widget %}
 
 {%block title %}- Discover{% endblock %}
 
@@ -15,8 +16,9 @@
   {% endfor %}
 </ul>
 
-<h2>Twitter</h2>
-<ul>
-</ul>
+<div>
+<h2>Tweets with #uwweb</h2>
+{% twitter_widget %}
+</div>
 
 {% endblock %}
