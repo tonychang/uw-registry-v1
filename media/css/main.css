@@ -2,18 +2,18 @@
 body {
 	margin: 0px;
 	background-color: #f9f4ec;
-	background-image: url(body_bg.gif);
+	background-image: url(/statics/images/body_bg.gif);
 	background-repeat: repeat-y;
 	background-position: center;
 	font-family: Helvetica, Arial, sans-serif;
 }
 #wrap {
-	background-image: url(bg.png);
+	background-image: url(/statics/images/bg.png);
 	background-repeat: repeat-x;
 }
 #center {
 	height: 126px;
-	background-image: url(banner.gif);
+	background-image: url(/statics/images/banner.gif);
 	background-repeat: no-repeat;
 	background-position:center;
 	text-align:right;
@@ -27,7 +27,7 @@ body {
 	margin:0 0 0 30px;
 	padding:25px 10px 60px 26px;
 	width: 215px;
-	background-image: url(sidebarBg.gif);
+	background-image: url(/statics/images/sidebarBg.gif);
 	background-repeat: no-repeat;
 }
 #toplist ul {
@@ -47,7 +47,7 @@ body {
 	width: 815px;
 	margin-right: auto;
 	margin-left: auto;
-	background-image: url(tab_left.gif);
+	background-image: url(/statics/images/tab_left.gif);
 	background-repeat: no-repeat;
 	padding: 0;
 	margin-top: -2px;
@@ -98,7 +98,7 @@ body {
 
 }
 .border {
-	background-image: url(border.png);
+	background-image: url(/statics/images/border.png);
 	background-repeat: repeat-y;
 	background-position: left;
 }
