@@ -1,71 +1,19 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-    <head>
-        <title>UW Service Registry {%block title%}{%endblock%}</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <link href="/statics/css/main.css" rel="stylesheet" type="text/css" />
-    </head>
-    <body>
-        <div id="wrap"> 
-            <div id="center">
-                <a id="logoUW" href="http://www.washington.edu/"></a>
-                <span id="nameBlock">
-                {% if user.is_authenticated%}
-                Welcome {{user.username}}
-                {% endif %}
-                </span>
-                <a id="logoRegistry" href="/"></a>
-            </div>
-            <div id="link">  
-                <ul class="links">
-                    <li><a href="/service/browse" class="left,browse">Browse the services</a></li>
-                    <li><a href="/service/add" class="left,border">Submit a new service</a></li>
-                    <li><a href="/service/mine" class="left,border">Manage your services</a></li>
-                    <li class="right"><img src="/statics/images/tab_right.gif" /></li>
-                </ul>
-            </div>
-            <div id="content">
-                <div id="messages">
-                    {%if messages%}
-                    {%for message in messages %}
-                    {{message}} 
-                    {%endfor%}
-                    {%endif%}
-                </div>
-                <div id="body">
-                    {% block body %}{%endblock%}
-                </div>
-            </div>
-        </div>
+{% extends "outer_layout.html" %}
 
-        <script type="text/javascript">
-            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-            </script>
-            <script type="text/javascript">
-                try {
-                    var pageTracker = _gat._getTracker("UA-8592171-1");
-                    pageTracker._trackPageview();
-                } catch(err) {}
-            </script>
-			<script type="text/javascript">
-			  var uservoiceJsHost = ("https:" == document.location.protocol) ? "https://uservoice.com" : "http://cdn.uservoice.com";
-			  document.write(unescape("%3Cscript src='" + uservoiceJsHost + "/javascripts/widgets/tab.js' type='text/javascript'%3E%3C/script%3E"))
-			</script>
-			<script type="text/javascript">
-			UserVoice.Tab.show({ 
-			  /* required */
-			  key: 'ontheroa',
-			  host: 'ontheroa.uservoice.com', 
-			  forum: '15200', 
-			  /* optional */
-			  alignment: 'left',
-			  background_color:'#f00', 
-			  text_color: 'white',
-			  hover_color: '#06C',
-			  lang: 'en'
-			})
-			</script>
-        </body>
-    </html>
+{%block outer_body %}
 
+<div id="content">
+  <div id="messages">
+    {%if messages%}
+    {%for message in messages %}
+    {{message}} 
+    {%endfor%}
+    {%endif%}
+  </div>
+  
+  <div id="body">
+    {% block body %}{%endblock%}
+  </div>
+</div>
+
+{%endblock%}
