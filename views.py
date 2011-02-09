@@ -50,13 +50,15 @@ def rss_view(request):
             RequestContext(request)
     )
 
+#@never_cache
 def service(request, nick):
     #service must have this nick and be approved:
     service = get_object_or_404(Service, nickname=nick, status=Service.APPROVE_STAT)
+    service_user_voice = UserVoice( nickname=nick, service=service )
     return render_to_response(
             "service.html",
             {
-                'service' : service,
+                'service' : service, 'uservoice' : service_user_voice,
             },
             RequestContext(request))
 

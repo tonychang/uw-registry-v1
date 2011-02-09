@@ -10,4 +10,14 @@
 {% if not service.root_url_hidden %} 
 <div><b>Root of service:</b> <a class="resource" href="{{service.root_url}}">{{service.root_url}}</a></div>
 {% endif %}
+<table>
+{% for suggestion in uservoice.suggestions %}
+	<tr>
+		<td class="votes">Votes: {{ suggestion.vote_count }}</td>
+		<td><a href="{{ suggestion.url }}">{{ suggestion.title }}</a></td>
+	<!--<td>created: {{ suggestion.created_at }}</td><td>last update: {{ suggestion.updated_at }}</td>-->
+	</tr>
+{%endfor%}
+</table>
+
 {%endblock%}
