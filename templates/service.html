@@ -8,6 +8,18 @@
 <div><b>Documentation:</b>   <a class="documentation" href="{{service.doc_url}}">{{service.doc_url}}</a></div>
 <div><b>Support contact:</b> <a class="support" href="mailto:{{service.support_contact}}">{{service.support_contact}}</a></div>
 {% if not service.root_url_hidden %} 
-<div><b>Root of service:</b> <a class="resource" href="{{service.root_url}}">{{service.root_url}}</a></div>
+<div><b>Root of service:</b> <a class="resource"
+  href="{{service.root_url}}">{{service.root_url}}</a></div>
 {% endif %}
+
+{% if service.client_libraries.count > 0 %}
+<div><b>Client Libraries:</b>
+  <ul>
+{% for client in service.client_libraries.all %}
+  <li><a href="{{client.url}}">{{client.language}}</a></li>
+{% endfor %}
+</ul>
+</div>
+{% endif %}
+
 {%endblock%}

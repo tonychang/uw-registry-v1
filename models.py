@@ -77,3 +77,10 @@ class Service (models.Model):
 
     def get_absolute_url(self):
         return "/%s/" % self.nickname;
+
+
+class ClientLibrary(models.Model):
+    language = models.CharField(help_text="Programming language this library is for.", max_length=30)
+    breif = models.CharField(blank=True, help_text="Particular name of library such as Andrew's Twitter lib.",max_length=120)
+    url = models.URLField(help_text="External url to webpage.")
+    service = models.ForeignKey('Service',related_name='client_libraries')

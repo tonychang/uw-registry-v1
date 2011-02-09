@@ -28,7 +28,30 @@
            {{ field.errors }}
     </li>
 {% endfor %}
+
+
+{% for form in apis_formset.forms %}
+{% for field in form %}
+{% if field.is_hidden %}
+{{ field }}
+{% else %}
+    <li>
+  
+           {{ field.label_tag }} 
+           {% if field.field.required %}
+           <em>*</em>
+           {% endif %} 
+           {{ field }}<br />
+           <span>{{ field.help_text }}</span>
+           {{ field.errors }}
+    </li>
+{% endif %}
+{% endfor %}
+
+{% endfor %}
 </ol>
+
+
     <p><input type="submit" value="Submit service" /></p>
 
 </form>

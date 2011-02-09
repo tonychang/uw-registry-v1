@@ -8,6 +8,8 @@ from uwregistry.models import Service
 from uwregistry.rss import RSS
 from datetime import datetime
 from django.core.mail import mail_admins
+from django.forms.models import formset_factory
+
 import sys
 
 def home(request):
@@ -85,21 +87,26 @@ def mine(request):
 @login_required
 def edit(request, nick):
     service = get_object_or_404(Service, nickname=nick, owner=request.user)
+
     if request.method == 'POST':
-        form = ServiceEditForm(instance=service, data=request.POST)
-        if form.is_valid():
-            form.save(commit=False)
+        service_form = ServiceEditForm(instance=service, data=request.POST,prefix='service')
+        #api_formset = ServiceClientEditFormSet(instance=service, data=request.POST,prefix='api')
+        if service_form.is_valid():
+            service_form.save(commit=False)
             service.date_modified = datetime.now()
             service.save()
             request.user.message_set.create(message='Service updated.')
+
             return HttpResponseRedirect('/service/mine/')
     else:
-        form = ServiceEditForm(instance=service)
+        api_formset = ServiceClientEditFormSet(instance=service,prefix='api')
+        service_form = ServiceEditForm(instance=service,prefix='service')
 
     return render_to_response(
             "submit.html", 
             {
-                'form' : form,
+                'form' : service_form,
+                'apis_formset': api_formset,
             }, 
             RequestContext(request))
 
