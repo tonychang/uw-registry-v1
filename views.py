@@ -100,6 +100,7 @@ def browse(request):
 
     return render_to_response("browse.html", {
         'services' : services,
+		'uservoice_url' : settings.USER_VOICE_URL,
         }, context_instance=RequestContext(request))
 
 def whatsnext(request):

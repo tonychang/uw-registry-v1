@@ -4,7 +4,10 @@
 
 {%block body %}
 {% if services%}
-<h1>Browse Services</h1>
+<h1>Browse Services</h1> 
+<div id="suggestions_link">
+	<a class="resource" href={{ uservoice_url }}> Can't find a service you need? Suggest one. </a>
+<div>
     <ul>
     {% for service in services.object_list %}
     <li><a href="{{service.get_absolute_url}}" class="{{service.nickname}}">{{ service.name }}</a></li>
