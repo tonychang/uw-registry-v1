@@ -64,7 +64,7 @@ def connect(request):
 
 def service(request, nick):
     #service must have this nick and be approved:
-    service = get_object_or_404(Service, nickname=nick, status=Service.APPROVE_STAT)
+    service = get_object_or_404(Service, nickname__iexact=nick, status=Service.APPROVE_STAT)
     service_user_voice = UserVoice( nickname=nick, service=service )
     return render_to_response(
             "service.html",
