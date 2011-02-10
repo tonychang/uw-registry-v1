@@ -5,6 +5,7 @@ from django.template import RequestContext
 from django import template
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.views.decorators.cache import never_cache
+from django.db.models import Q
 from uwregistry.forms import *
 from uwregistry.models import Service
 from uwregistry.rss import RSS
@@ -62,7 +63,7 @@ def learn(request):
 def discover(request):
     upcoming_services = Service.objects.filter(status=Service.APPROVE_STAT).order_by('date_submitted').reverse().filter(in_development=True)
     user_voice = UserVoice()
-    user_voice.retrieve_data()
+    user_voice.retrieve_data_for_all()
     
     return render_to_response("discover.html",
         {
@@ -94,7 +95,7 @@ def render_service_list(request,template,args={}):
     services_list = Service.objects.extra(select={'lower_name': 'lower(name)'}).order_by('lower_name').filter(status=Service.APPROVE_STAT)
 
     if search_name != None:
-        services_list = services_list.filter(name__contains = search_name)
+        services_list = services_list.filter(Q(name__contains = search_name) | Q(nickname__contains = search_name))
 
     paginator = Paginator(services_list, 10)
     # Make sure page request is an int. If not, deliver first page.

@@ -21,6 +21,7 @@
 {% twitter_widget %}
 </div>
 
+<h2>Top User Suggestions</h2>
 <table>
 {% for suggestion in user_voice.suggestions %}
 	<tr><td class="votes">Votes: {{ suggestion.vote_count }}/{{ suggestion.supporter_count }}</td><td>{{ suggestion.title }}</td><td>created: {{ suggestion.created_at }}</td><td>last update: {{ suggestion.updated_at }}</td></tr>
