@@ -11,6 +11,7 @@ from uwregistry.rss import RSS
 from uwregistry.user_voice import UserVoice
 from datetime import datetime
 from django.core.mail import mail_admins
+from django.conf import settings
 import sys
 
 
@@ -76,7 +77,9 @@ def service(request, nick):
     return render_to_response(
             "service.html",
             {
-                'service' : service, 'uservoice' : service_user_voice,
+                'service' : service, 
+				'uservoice' : service_user_voice, 
+				'uservoice_url' : settings.USER_VOICE_URL,
             },
             RequestContext(request))
 
