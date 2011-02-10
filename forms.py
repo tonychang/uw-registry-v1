@@ -27,7 +27,7 @@ class ClientLibraryForm(ModelForm):
 class ServiceEditForm(ServiceForm):
     class Meta:
         model = Service
-        exclude = ['owner', 'date_submitted', 'date_modified', 'status', 'nickname']
+        exclude = ['owner', 'date_submitted', 'date_modified', 'status', 'nickname', 'user_voice_categories']
 
 class BaseServiceClientEditFormSet(BaseInlineFormSet):
 #    def __init__(self,**kargs):

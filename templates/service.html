@@ -22,4 +22,26 @@
 </div>
 {% endif %}
 
+<!-- Dont show the suggestions if there are none -->
+{% if uservoice.suggestions %}
+	<br />
+	<br />
+	<div id="uservoice_suggestions">
+	<span>User Voice Suggestions</span>
+	<table>
+	{% for suggestion in uservoice.suggestions %}
+		<tr>
+			<td>{{ suggestion.vote_count }}</td>
+			<td><a href="{{ suggestion.url }}">{{ suggestion.title }}</a></td>
+			<td>{{ suggestion.status.name }}</td>
+		</tr>
+	{%endfor%}
+{% endif %}
+</table>
+</div>
+<br />
+<br />
+<div id="suggestions_link">
+	<a class="resource" href={{ uservoice_url }}> Create a suggestion for this service </a>
+<div>
 {%endblock%}

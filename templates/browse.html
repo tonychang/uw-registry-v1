@@ -1,38 +1,33 @@
 {%extends "base.html"%}
 
+{% load service_list_widget %}
+
 {%block title %}- Browse services{% endblock %}
 
 {%block body %}
 {% if services%}
 <h1>Browse Services</h1>
-    <ul>
-    {% for service in services.object_list %}
-    <li><a href="{{service.get_absolute_url}}" class="{{service.nickname}}">{{ service.name }}</a></li>
-    <p>
-    {% filter truncatewords:25 %}
-        {{service.description}}
-    {% endfilter %}
-    </p>
-    {% endfor %}
-    </ul>
-    <div class="pagination">
-    <span class="step-links">
-        {% if services.has_previous %}
-            <a href="?page={{ services.previous_page_number }}">previous</a>
-        {% endif %}
 
-        <span class="current">
-            Page {{ services.number }} of {{ services.paginator.num_pages }}.
-        </span>
+<div id='search-container'>
+<label for='search'>Search:</label>
+<input id='search'
+{% if search %}
+value='{{ search }}'
+{% endif %}
+></search>
+</div>  
 
-        {% if services.has_next %}
-            <a href="?page={{ services.next_page_number }}">next</a>
-        {% endif %}
-    </span>
-</div>
+<div id="suggestions_link">
+	<a class="resource" href={{ uservoice_url }}> Can't find a service you need? Suggest one. </a>
+<div>
+
+  {% service_list_widget services %}
 {% else %}
     <p>No services available.</p>
 {% endif %}
 
 {% endblock %}
 
+{%block js %}
+<script type="text/javascript" src="/statics/js/search.js"></script>
+{% endblock %}

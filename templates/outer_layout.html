@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <title>UW Service Registry {%block title%}{%endblock%}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="/statics/css/main.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="/statics/css/new.css" />
+    </head>
+    <body>
+        <div id="wrap"> 
+            <div id="center">
+                <a id="logoUW" href="http://www.washington.edu/"></a>
+                <span id="nameBlock">
+                {% if user.is_authenticated%}
+                Welcome {{user.username}}
+                {% endif %}
+                </span>
+                <a id="logoRegistry" href="/"></a>
+            </div>
+            <div id="link">  
+                <ul class="links">
+                    <li><a href="/service/browse" class="left,browse">Browse the services</a></li>
+                    <li><a href="/service/add" class="left,border">Submit a new service</a></li>
+                    <li><a href="/service/mine" class="left,border">Manage your services</a></li>
+                    <li class="right"><img src="/statics/images/tab_right.gif" /></li>
+                </ul>
+            </div>
+       </div>
+
+           {% block outer_body %}{%endblock%}
+
+
+       <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+       <script type="text/javascript">
+       google.load("jquery", "1.5");
+       </script>
+
+       {% block js %}{%endblock%}
+
+       
+        <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+            </script>
+            <script type="text/javascript">
+                try {
+                    var pageTracker = _gat._getTracker("UA-8592171-1");
+                    pageTracker._trackPageview();
+                } catch(err) {}
+            </script>
+        </body>
+    </html>
+

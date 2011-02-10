@@ -2,6 +2,11 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
+class UserVoiceId( models.Model ):
+    service     = models.ForeignKey('Service',)
+    category_id = models.IntegerField()
+    class Meta:
+        unique_together = ("service", "category_id")
 
 class Service (models.Model):
 
@@ -71,13 +76,14 @@ class Service (models.Model):
 
     in_development = models.BooleanField(default=False)
 
+    user_voice_categories = models.ManyToManyField(UserVoiceId, verbose_name="list of UserVoice categories", related_name="%(app_label)s_%(class)s_related")
+
     #methods
     def __unicode__ (self):
         return self.nickname;
 
     def get_absolute_url(self):
         return "/%s/" % self.nickname;
-
 
 class ClientLibrary(models.Model):
     language = models.CharField(help_text="Programming language this library is for.", max_length=30)
