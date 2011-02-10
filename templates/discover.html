@@ -1,11 +1,24 @@
 {%extends "base.html"%}
 
+{% load whats_new %}
+{% load twitter_widget %}
+
 {%block title %}- Discover{% endblock %}
 
 {%block body %}
 
 <h1>Discover</h1>
 
-<div id='blog-feed'>RSS Feed Goes Here</div>
+<h2>Upcoming Services</h2>
+<ul>
+  {% for service in upcoming_services %}
+  <li><a href="{{service.get_absolute_url}}" class="{{service.nickname}}">{{ service.name }}</a></li>
+  {% endfor %}
+</ul>
+
+<div>
+<h2>Tweets with #uwweb</h2>
+{% twitter_widget %}
+</div>
 
 {% endblock %}
