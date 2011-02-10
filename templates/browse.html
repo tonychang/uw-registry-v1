@@ -7,29 +7,21 @@
 {%block body %}
 {% if services%}
 <h1>Browse Services</h1>
-<input id='search'></search>
-   
-<h1>Browse Services</h1> 
+
+<div id='search-container'>
+<label for='search'>Search:</label>
+<input id='search'
+{% if search %}
+value='{{ search }}'
+{% endif %}
+></search>
+</div>  
+
 <div id="suggestions_link">
 	<a class="resource" href={{ uservoice_url }}> Can't find a service you need? Suggest one. </a>
 <div>
 
   {% service_list_widget services %}
- <div class="pagination">
-    <span class="step-links">
-        {% if services.has_previous %}
-            <a href="?page={{ services.previous_page_number }}"> &lt &lt </a>
-        {% endif %}
-
-        <span class="current">
-            Page {{ services.number }} of {{ services.paginator.num_pages }}.
-        </span>
-
-        {% if services.has_next %}
-            <a href="?page={{ services.next_page_number }}"> &gt &gt</a>
-        {% endif %}
-    </span>
-</div>
 {% else %}
     <p>No services available.</p>
 {% endif %}
