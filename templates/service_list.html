@@ -1,0 +1,28 @@
+<div id='service-list'>
+<ul>
+  {% for service in services.object_list %}
+  <li><a href="{{service.get_absolute_url}}" class="{{service.nickname}}">{{ service.name }}</a></li>
+  <p>
+  {% filter truncatewords:25 %}
+  {{service.description}}
+  {% endfilter %}
+  </p>
+  {% endfor %}
+
+   <div class="pagination">
+    <span class="step-links">
+        {% if services.has_previous %}
+            <a href="?page={{ services.previous_page_number }}"> &lt &lt </a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ services.number }} of {{ services.paginator.num_pages }}.
+        </span>
+
+        {% if services.has_next %}
+            <a href="?page={{ services.next_page_number }}&search={{ search }}"> &gt &gt</a>
+        {% endif %}
+    </span>
+</div>
+</ul>
+</div>

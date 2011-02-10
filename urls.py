@@ -6,6 +6,8 @@ urlpatterns = patterns('uwregistry',
     (r'^learn$', 'views.learn'),
     (r'^discover$', 'views.discover'),
     (r'^connect$', 'views.connect'),
+
+    (r'^search$', 'views.search'),
                        
     (r'^service/add/$', 'views.submit'),
     (r'^service/browse/$', 'views.browse'),

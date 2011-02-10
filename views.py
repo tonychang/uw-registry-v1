@@ -11,6 +11,7 @@ from uwregistry.rss import RSS
 from uwregistry.user_voice import UserVoice
 from datetime import datetime
 from django.core.mail import mail_admins
+from django.conf import settings
 import sys
 
 
@@ -60,9 +61,14 @@ def learn(request):
 
 def discover(request):
     upcoming_services = Service.objects.filter(status=Service.APPROVE_STAT).order_by('date_submitted').reverse().filter(in_development=True)
+    user_voice = UserVoice()
+    user_voice.retrieve_data()
     
     return render_to_response("discover.html",
-        { 'upcoming_services': upcoming_services },
+        {
+          'upcoming_services': upcoming_services,
+          'user_voice': user_voice
+        },
         RequestContext(request)
         )
 
@@ -76,12 +82,20 @@ def service(request, nick):
     return render_to_response(
             "service.html",
             {
-                'service' : service, 'uservoice' : service_user_voice,
+                'service' : service, 
+				'uservoice' : service_user_voice, 
+				'uservoice_url' : settings.USER_VOICE_URL,
             },
             RequestContext(request))
 
-def browse(request):
+def render_service_list(request,template,args={}):
+    search_name = request.GET.get('search')
+
     services_list = Service.objects.extra(select={'lower_name': 'lower(name)'}).order_by('lower_name').filter(status=Service.APPROVE_STAT)
+
+    if search_name != None:
+        services_list = services_list.filter(name__contains = search_name)
+
     paginator = Paginator(services_list, 10)
     # Make sure page request is an int. If not, deliver first page.
     try:
@@ -89,15 +103,25 @@ def browse(request):
     except ValueError:
         page = 1
 
-    # If page request (9999) is out of range, deliver last page of results.
     try:
         services = paginator.page(page)
     except (EmptyPage, InvalidPage):
         services = paginator.page(paginator.num_pages)
 
-    return render_to_response("browse.html", {
+    base_args = {
         'services' : services,
-        }, context_instance=RequestContext(request))
+        'search': search_name,
+    }
+
+    base_args.update(args)
+    
+    return render_to_response(template, base_args, context_instance=RequestContext(request))
+
+def browse(request):
+    return render_service_list(request,"browse.html",{'uservoice_url' : settings.USER_VOICE_URL})
+
+def search(request):
+    return render_service_list(request,"service_list.html")
 
 def whatsnext(request):
     services = Service.objects.filter(status=Service.APPROVE_STAT).order_by('date_submitted').reverse().filter(in_development=True)
