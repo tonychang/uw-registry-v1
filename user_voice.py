@@ -27,18 +27,19 @@ class UserVoice(object):
         self.forum_id       = forum_id
         self._suggestions   = None
         self.category_ids   = []
-        if service != None and len( service.user_voice_categories.all() ) == 0:
-            category_ids    = self.lookup_category_id( nickname=nickname )
-            for category_id in category_ids:
-                uvid        = UserVoiceId()
-                uvid.category_id = category_id
-                uvid.service= service
-                uvid.save()
-                service.user_voice_categories.add( uvid )
-                self.category_ids.append( category_id )
-        else:
-            for uvid in service.user_voice_categories.all():
-                self.category_ids.append( uvid.category_id )
+        if service != None:
+            if len( service.user_voice_categories.all() ) == 0:
+                category_ids    = self.lookup_category_id( nickname=nickname )
+                for category_id in category_ids:
+                    uvid        = UserVoiceId()
+                    uvid.category_id = category_id
+                    uvid.service= service
+                    uvid.save()
+                    service.user_voice_categories.add( uvid )
+                    self.category_ids.append( category_id )
+            else:
+                for uvid in service.user_voice_categories.all():
+                    self.category_ids.append( uvid.category_id )
             
 
     def lookup_category_id( self, nickname=None ):

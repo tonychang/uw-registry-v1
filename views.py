@@ -60,9 +60,14 @@ def learn(request):
 
 def discover(request):
     upcoming_services = Service.objects.filter(status=Service.APPROVE_STAT).order_by('date_submitted').reverse().filter(in_development=True)
+    user_voice = UserVoice()
+    user_voice.retrieve_data()
     
     return render_to_response("discover.html",
-        { 'upcoming_services': upcoming_services },
+        {
+          'upcoming_services': upcoming_services,
+          'user_voice': user_voice
+        },
         RequestContext(request)
         )
 
@@ -98,6 +103,29 @@ def browse(request):
     return render_to_response("browse.html", {
         'services' : services,
         }, context_instance=RequestContext(request))
+
+def search(request):
+    search_name = request.GET.get('search')
+    
+    services_list = Service.objects.extra(select={'lower_name': 'lower(name)'}).order_by('lower_name').filter(status=Service.APPROVE_STAT)
+
+    if search_name != None:
+        services_list = services_list.filter(name__contains = search_name)
+    
+    paginator = Paginator(services_list, 10)
+    # Make sure page request is an int. If not, deliver first page.
+    try:
+        page = int(request.GET.get('page', '1'))
+    except ValueError:
+        page = 1
+
+#    for service in services_list:
+#        print 'service: %s ' % str(service)
+    
+    return render_to_response("service_list.html", {
+        'services' : services_list,
+        }, context_instance=RequestContext(request))
+
 
 def whatsnext(request):
     services = Service.objects.filter(status=Service.APPROVE_STAT).order_by('date_submitted').reverse().filter(in_development=True)

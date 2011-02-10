@@ -21,4 +21,11 @@
 {% twitter_widget %}
 </div>
 
+<table>
+{% for suggestion in user_voice.suggestions %}
+	<tr><td class="votes">Votes: {{ suggestion.vote_count }}/{{ suggestion.supporter_count }}</td><td>{{ suggestion.title }}</td><td>created: {{ suggestion.created_at }}</td><td>last update: {{ suggestion.updated_at }}</td></tr>
+{%endfor%}
+</table>
+
+
 {% endblock %}
