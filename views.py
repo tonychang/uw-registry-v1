@@ -11,6 +11,7 @@ from uwregistry.rss import RSS
 from uwregistry.user_voice import UserVoice
 from datetime import datetime
 from django.core.mail import mail_admins
+from django.conf import settings
 import sys
 
 
@@ -76,12 +77,14 @@ def connect(request):
 
 def service(request, nick):
     #service must have this nick and be approved:
-    service = get_object_or_404(Service, nickname=nick, status=Service.APPROVE_STAT)
+    service = get_object_or_404(Service, nickname__iexact=nick, status=Service.APPROVE_STAT)
     service_user_voice = UserVoice( nickname=nick, service=service )
     return render_to_response(
             "service.html",
             {
-                'service' : service, 'uservoice' : service_user_voice,
+                'service' : service, 
+				'uservoice' : service_user_voice, 
+				'uservoice_url' : settings.USER_VOICE_URL,
             },
             RequestContext(request))
 
@@ -102,6 +105,7 @@ def browse(request):
 
     return render_to_response("browse.html", {
         'services' : services,
+		'uservoice_url' : settings.USER_VOICE_URL,
         }, context_instance=RequestContext(request))
 
 def search(request):

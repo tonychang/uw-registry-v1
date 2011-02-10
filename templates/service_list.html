@@ -1,0 +1,10 @@
+<ul id='service-list'>
+  {% for service in services %}
+  <li><a href="{{service.get_absolute_url}}" class="{{service.nickname}}">{{ service.name }}</a></li>
+  <p>
+  {% filter truncatewords:25 %}
+  {{service.description}}
+  {% endfilter %}
+  </p>
+  {% endfor %}
+</ul>
