@@ -9,24 +9,28 @@
 
 <h1>Discover</h1>
 
-<h2>Upcoming Services</h2>
-<ul>
+<div id='upcoming-container'>
+<h2 id='upcoming-header'>Upcoming Services</h2>
+<ul id='upcoming-list'>
   {% for service in upcoming_services %}
   <li><a href="{{service.get_absolute_url}}" class="{{service.nickname}}">{{ service.name }}</a></li>
   {% endfor %}
 </ul>
+</div>
 
-<div>
-<h2>Tweets with #uwweb</h2>
+<div id='tweet-container'>
+<h2 id='tweet-header'>Tweets with #uwweb</h2>
 {% twitter_widget %}
 </div>
 
-<h2>Top User Suggestions</h2>
-<table>
+<div id='top-suggets-container'>
+<h2 id='top-suggets-header'>Top User Suggestions</h2>
+<table id='top-suggests-list'>
 {% for suggestion in user_voice.suggestions %}
-	<tr><td class="votes">Votes: {{ suggestion.vote_count }}/{{ suggestion.supporter_count }}</td><td>{{ suggestion.title }}</td><td>created: {{ suggestion.created_at }}</td><td>last update: {{ suggestion.updated_at }}</td></tr>
+	<tr><td class="votes">Votes: {{ suggestion.vote_count }}/{{ suggestion.supporters_count }}</td><td>{{ suggestion.title }}</td><td>created: {{ suggestion.created_at }}</td><td>last update: {{ suggestion.updated_at }}</td></tr>
 {%endfor%}
 </table>
+</div>
 
 
 {% endblock %}
