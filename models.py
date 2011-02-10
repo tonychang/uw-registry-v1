@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 class UserVoiceId( models.Model ):
     service     = models.ForeignKey('Service',)
     category_id = models.IntegerField()
+    class Meta:
+        unique_together = ("service", "category_id")
 
 class Service (models.Model):
 
