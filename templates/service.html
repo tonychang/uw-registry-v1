@@ -21,7 +21,7 @@
 	{% for suggestion in uservoice.suggestions %}
 		<tr>
 			<td>{{ suggestion.vote_count }}</td>
-			<td><a href="{{ suggestion.url }}">{{ suggestion.title }}</a></td>
+			<td><a href="{{ suggestion.url }}">{{ suggestion.title|safe }}</a></td>
 			<td>{{ suggestion.status.name }}</td>
 		</tr>
 	{%endfor%}
