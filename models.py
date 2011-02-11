@@ -82,7 +82,7 @@ class Service (models.Model):
 
     in_development = models.BooleanField(
 			default=False,
-			help_text="Check this if your service is in development.")
+			help_text="Check this if your service is in development. Production requires both doc and root urls.")
 
     user_voice_categories = models.ManyToManyField(UserVoiceId, verbose_name="list of UserVoice categories", related_name="%(app_label)s_%(class)s_related")
 
