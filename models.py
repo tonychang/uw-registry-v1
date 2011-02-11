@@ -54,15 +54,18 @@ class Service (models.Model):
     doc_url = models.URLField(
             help_text="Type in the url to your service documentation",
 			verify_exists=False,
+			null=True,
             )
 
     root_url = models.URLField(
             help_text="Type in the service url that you want exposed to applications",
 			verify_exists=False,
+			null=True,
             )
 
     root_url_hidden = models.BooleanField(
             help_text="Check this if you want your web services hidden to the public",
+			blank=True,
             )
 
     status = models.IntegerField(
@@ -74,7 +77,9 @@ class Service (models.Model):
 
     date_modified = models.DateTimeField()
 
-    in_development = models.BooleanField(default=False)
+    in_development = models.BooleanField(
+			default=False,
+			help_text="Check this if your service is in development.")
 
     user_voice_categories = models.ManyToManyField(UserVoiceId, verbose_name="list of UserVoice categories", related_name="%(app_label)s_%(class)s_related")
 
