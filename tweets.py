@@ -1,7 +1,10 @@
 import tweepy
 
 def get_tweets():
-    return tweepy.api.search('#uwweb',rpp=10)
+    try:
+        return tweepy.api.search('#uwweb',rpp=10,headers={'User-Agent': 'tweepy'})
+    except tweepy.TweepError, e:
+        return []
 
 if __name__ == "__main__":
     for tweet in get_tweets():
