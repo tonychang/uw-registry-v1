@@ -55,12 +55,15 @@ class Service (models.Model):
             help_text="Type in the url to your service documentation",
 			verify_exists=False,
 			null=True,
+                        blank=True
             )
 
     root_url = models.URLField(
             help_text="Type in the service url that you want exposed to applications",
 			verify_exists=False,
 			null=True,
+                        blank=True
+        
             )
 
     root_url_hidden = models.BooleanField(
