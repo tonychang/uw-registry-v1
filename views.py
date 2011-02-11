@@ -179,7 +179,7 @@ def submit(request):
 
         if form.is_valid():
             service = form.save(commit=False)
-            service.owner = "Bill"#request.user
+            service.owner = request.user
             service.status = service.SUBMIT_STAT
             service.date_submitted = datetime.now()
             service.date_modified = datetime.now()
