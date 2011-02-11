@@ -1,7 +1,7 @@
 <div>
   <h2>What's new</h2>
   <ul>
-{% for entry in rss.entries %}
+{% for entry in rss_entries %}
 	<li><a  class="rss" id="rss_link" href="{{ entry.link }}">{{ entry.title }}</a> - <div  class="rss" id="rss_date">{{ entry.updated_parsed }}</div></li>
 {% endfor %}
   </ul>
