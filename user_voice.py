@@ -30,6 +30,7 @@ class UserVoice(object):
         self._suggestions   = None
         self.category_ids   = []
         self.nickname       = nickname
+        self.service        = service
         if service != None:
             if len( service.user_voice_categories.all() ) == 0:
                 self.update_service_suggestions( service )
@@ -59,7 +60,6 @@ class UserVoice(object):
                 ids.append( int( category.get('id') ) )
         return ids
 
-    
     def _request_json( self, request_url, data=None ):
         """
             retrieve json object from request_url and convert it to python object using python json converter.
@@ -78,6 +78,7 @@ class UserVoice(object):
             f.close()
         except:
             import traceback
+            import sys
             traceback.print_exc(file=sys.stderr)
             raise
         return response_data
@@ -136,6 +137,12 @@ class UserVoice(object):
                 # resort, since we can have multiple categories
             self._suggestions = sorted( self._suggestions, key=lambda s: int(s.get('vote_count', 0)), reverse=True)
         return self._suggestions
+    def service_url( self ):
+        try:
+            return '%s/forums/%s/category/%s' % ( settings.USER_VOICE_URL, settings.USER_VOICE_FORUM_ID, self.service.user_voice_categories.all()[0].category_id )
+        except:
+            pass
+        return settings.USER_VOICE_URL
 
 class user_voice(unittest.TestCase):
     def setUp(self):
