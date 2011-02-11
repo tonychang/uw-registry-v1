@@ -176,6 +176,7 @@ def submit(request):
 
     if request.method == 'POST':
         form = ServiceForm(data=request.POST)
+
         if form.is_valid():
             service = form.save(commit=False)
             service.owner = "Bill"#request.user
