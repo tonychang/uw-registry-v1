@@ -91,4 +91,13 @@
     padding-top: 12px;
     width: 958px;
 }
+#footer {
+	clear: both;
+	background: #eee;
+	padding: 2px;
+	border-top: 2px solid #ddd;
+	text-align: center;
+	color: #777;
+	font-size: 10%;
+}
 
