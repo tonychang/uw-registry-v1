@@ -18,6 +18,11 @@
 	<div id="uservoice_suggestions">
 	<span>User Voice Suggestions</span>
 	<table>
+		<tr>
+			<th>Votes</th>
+			<th>Suggestion</th>
+			<th>Status</th>	
+		</tr>
 	{% for suggestion in uservoice.suggestions %}
 		<tr>
 			<td>{{ suggestion.vote_count }}</td>
