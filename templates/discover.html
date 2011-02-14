@@ -13,7 +13,7 @@
 <h2 id='upcoming-header'>Upcoming Services</h2>
 <ul id='upcoming-list'>
   {% for service in upcoming_services %}
-  <li><a href="{{service.get_absolute_url}}" class="{{service.nickname}}">{{ service.name }}</a></li>
+  <li><a href="{{service.get_absolute_url}}" class="{{service.nickname}}">{{ service.name }}</a><br /> {{service.description}}</li>
   {% endfor %}
 </ul>
 </div>
@@ -27,7 +27,7 @@
 <h2 id='top-suggets-header'>Top User Suggestions</h2>
 <table id='top-suggests-list'>
 {% for suggestion in user_voice.suggestions %}
-	<tr><td class="votes">Votes: {{ suggestion.vote_count }}</td><td>{{ suggestion.title|safe }}</td></tr>
+	<tr><td class="votes">Votes: {{ suggestion.vote_count }}</td><td><a href="{{ suggestion.url }}">{{ suggestion.title|safe }}</a></td></tr>
 {%endfor%}
 </table>
 </div>
