@@ -4,7 +4,7 @@
 rss.py
 
 Created by Nick Chen on 2011-02-07.
-Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+Copyright (c) 2011 UW. All rights reserved.
 """
 
 import unittest
