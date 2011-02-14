@@ -1,4 +1,3 @@
-
 body {
     background-color: #F9F4EC;
     background-image: url("/statics/images/body_bg.gif");
@@ -68,8 +67,14 @@ body {
     margin-top: 5px;
     padding-top: 12px;
 }
+.links li:first-child a {
+    background: url("/statics/images/home.gif") no-repeat scroll 37px 9px transparent;
+    border-left: medium none transparent !important;
+    text-indent: -9999px;
+    width: 40px;
+}
 .links a {
-	border-left: 1px solid #FFFFFF;
+	border-left: 1px solid #f4f4f4;
     color: #545278;
     display: block;
     float: left;
