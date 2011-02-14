@@ -47,7 +47,7 @@ body {
     margin-top: -2px;
     overflow: hidden;
     padding: 0;
-    width: 863px;
+    width: 875px;
 }
 .links li {
     display: inline;
@@ -68,7 +68,7 @@ body {
     padding-top: 12px;
 }
 .links li:first-child a {
-    background: url("/statics/images/home.gif") no-repeat scroll 37px 9px transparent;
+    background: url("/statics/images/home.gif") no-repeat scroll 37px 12px transparent;
     border-left: medium none transparent !important;
     text-indent: -9999px;
     width: 40px;
@@ -90,7 +90,8 @@ body {
     border-left: 1px solid #FFFFFF;
 }
 .links a:hover {
-    color: #291F3D;
+    color: #FFFFFF;
+    text-shadow: 1px 1px 1px #999999;
 }
 #content {
     margin-left: auto;
@@ -287,7 +288,6 @@ form.cmxform fieldset fieldset label {
     margin: 0;
     padding: 0 0 10px 9px;
 }
-
 .tile {
     background: url("/statics/images/tile.jpg") no-repeat scroll left top transparent;
     float: left;
@@ -445,3 +445,4 @@ a {
     width: 350px;
     border: 1px solid #FFFFFF;
 }
+
