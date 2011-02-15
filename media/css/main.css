@@ -144,8 +144,11 @@ h2 {
     text-shadow: 2px 2px 2px #D3D3D3;
 }
 a {
-    color: #3C2A5E;
+    color: #0F79A3;
     text-decoration: none;
+}
+a:hover {
+	color: #0d4d67;
 }
 #content a:visited {
     color: #58410A;
@@ -258,6 +261,10 @@ form.cmxform label {
     list-style: none;
     padding: 0 0 0 10px;
     margin-top: 10px;
+}
+#content .cmxform li {
+    background: none;
+    padding: 0;
 }
 #top-suggests-list tr {
     padding: 17px 0;
@@ -392,6 +399,7 @@ a {
 }
 #suggestions_link {
     clear: both;
+    margin: 20px 0 10px;
 }
 #service-list {
     clear: both;
