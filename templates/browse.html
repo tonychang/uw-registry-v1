@@ -5,29 +5,28 @@
 {%block title %}- Browse services{% endblock %}
 
 {%block body %}
-{% if services%}
+{% if services %}
 <h1>Browse Services</h1>
+	<div id="suggestions_link">
+		<a class="resource" href={{ uservoice_url }}> Can't find a service you need? Suggest one. </a>
+	</div>
+		<div id='search-container'>
+		<label for='search'>Search:</label>
+		<input id='search'
+		{% if search %}
+		value='{{ search }}'
+		{% endif %}
+		></input>
+		</div>  
 
-<div id='search-container'>
-<label for='search'>Search:</label>
-<input id='search'
-{% if search %}
-value='{{ search }}'
-{% endif %}
-></search>
-</div>  
+		{% service_list_widget services %}
+		{% else %}
+		    <p>No services available.</p>
+		{% endif %}
 
-<div id="suggestions_link">
-	<a class="resource" href={{ uservoice_url }}> Can't find a service you need? Suggest one. </a>
-<div>
-
-  {% service_list_widget services %}
-{% else %}
-    <p>No services available.</p>
-{% endif %}
-
+	{%block js %}
+	<script type="text/javascript" src="/statics/js/search.js"></script>
+	{% endblock %}
 {% endblock %}
 
-{%block js %}
-<script type="text/javascript" src="/statics/js/search.js"></script>
-{% endblock %}
+
