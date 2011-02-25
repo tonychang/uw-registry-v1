@@ -12,9 +12,13 @@
 <div id='upcoming-container'>
 <h2 id='upcoming-header'>Upcoming Services</h2>
 <ul id='upcoming-list'>
+{% if upcoming_services%}
   {% for service in upcoming_services %}
   <li><a href="{{service.get_absolute_url}}" class="{{service.nickname}}">{{ service.name }}</a><br /> {{service.description}}</li>
   {% endfor %}
+{% else %}
+	<p>No services currently in development</p>
+{%endif%}
 </ul>
 </div>
 
