@@ -10,11 +10,11 @@
 {% if not service.root_url_hidden %} 
 <div><b>Root of service:</b> <a class="resource" href="{{service.root_url}}">{{service.root_url}}</a></div>
 {% endif %}
-
+<div id="suggestions_link">
+	<a class="resource" href={{ uservoice.service_url }}> Create a suggestion for this service </a>
+</div>
 <!-- Dont show the suggestions if there are none -->
 {% if uservoice.suggestions %}
-	<br />
-	<br />
 	<div id="uservoice_suggestions">
 	<span>User Voice Suggestions</span>
 	<table>
@@ -35,7 +35,5 @@
 {% endif %}
 <br />
 <br />
-<div id="suggestions_link">
-	<a class="resource" href={{ uservoice.service_url }}> Create a suggestion for this service </a>
-</div>
+
 {%endblock%}

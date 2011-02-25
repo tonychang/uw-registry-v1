@@ -21,7 +21,7 @@ def home(request):
     return render_to_response(
             "index.html",
             {
-                'services' : top_services
+                'services' : top_services,
 	        },
             RequestContext(request)
     )
