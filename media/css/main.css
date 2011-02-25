@@ -453,4 +453,13 @@ a {
     width: 350px;
     border: 1px solid #FFFFFF;
 }
-
+#use-cases {
+    clear:both;
+}
+#use-heading {
+    padding-top:40px;
+}
+.spacer {
+    float:left;
+    width:50%;
+}
