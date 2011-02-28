@@ -31,7 +31,9 @@
 <h2 id='top-suggets-header'>Top User Suggestions</h2>
 <table id='top-suggests-list'>
 {% for suggestion in user_voice.suggestions %}
+	{% if suggestion.status.name != 'completed' %}
 	<tr><td class="votes">Votes: {{ suggestion.vote_count }}</td><td><a href="{{ suggestion.url }}">{{ suggestion.title|safe }}</a></td></tr>
+	{% endif %}
 {%endfor%}
 </table>
 </div>

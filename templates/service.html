@@ -24,11 +24,13 @@
 			<th>Status</th>	
 		</tr>
 	{% for suggestion in uservoice.suggestions %}
+	{% if suggestion.status.name != 'completed' %}
 		<tr>
 			<td>{{ suggestion.vote_count }}</td>
 			<td><a href="{{ suggestion.url }}">{{ suggestion.title|safe }}</a></td>
 			<td>{{ suggestion.status.name }}</td>
 		</tr>
+	{% endif %}
 	{%endfor%}
 	</table>
 	</div>

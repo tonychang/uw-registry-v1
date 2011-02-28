@@ -92,8 +92,8 @@ class UserVoice(object):
             response_data       = self._request_json( '%sforums/%s/suggestions.json?client=%s&category=%s' % ( self.api_url, self.forum_id, self.client_key, category_id ) )
             for suggestion in response_data.get('suggestions', []):
                 try:
-                        # strptime doesn't handle %z for timezone
-                        # 2010/11/22 19:42:27 +0000
+                    # strptime doesn't handle %z for timezone
+                    # 2010/11/22 19:42:27 +0000
                     suggestion['created_at'] = parse( suggestion.get('created_at') )
                 except:
                     # ignore case where created_at is missing
