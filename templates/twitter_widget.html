@@ -1,5 +1,5 @@
 <ul class='tweet-list'>
-{% for tweet in tweets %}
+{% for tweet in tweets|slice:":5" %}
   <li class='tweet-item'><b><span
   class='tweet-user'>{{tweet.from_user|safe}}</span></b><span
   class='tweet-separator'> - </span><span class='tweet-text'>{{tweet.text|safe}}</span></li>
