@@ -248,11 +248,13 @@ form.cmxform label {
     float: left;
     width: 550px;
 }
+
 #tweet-container {
     clear: both;
     float: left;
     width: 423px;
 }
+
 #content ul {
     padding: 0;
 }
